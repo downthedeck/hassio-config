@@ -23,6 +23,8 @@ cards:
     entities:    
       - entity: binary_sensor.pve_hassio_running
         name: Hassio VM
+      - entity: binary_sensor.pve_hassio_dev_running
+        name: Hassio-dev VM
       - sensor.current_version
       - sensor.ipv4_address_enp0s18
       - binary_sensor.updater
