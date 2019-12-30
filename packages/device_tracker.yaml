@@ -1,7 +1,8 @@
 homeassistant:
 
 device_tracker:
-  - platform: bluetooth
+  - platform: bluetooth_tracker
+  
 group:
   people:
     name: "Aanwezigheid"
