@@ -31,3 +31,4 @@ proxmoxve:
       - node: "pve"
         vms:
           - 100
+          - 101
