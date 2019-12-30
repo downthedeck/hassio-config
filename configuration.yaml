@@ -29,12 +29,3 @@ homeassistant:
 
 lovelace:
   mode: yaml
-
-#influxdb:
-#  host: a0d7b954-influxdb
-#  port: 8086
-#  database: homeassistant
-#  username: homeassistant
-#  password: "!Adp56gyd"
-#  max_retries: 3
-#  default_measurement: state
