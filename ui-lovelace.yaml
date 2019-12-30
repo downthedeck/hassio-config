@@ -21,7 +21,9 @@ resources:
   - url: /community_plugin/custom-header/custom-header.js
     type: module
 
-
+  - url: /community_plugin/weather-card/weather-card.js
+    type: module
+    
 title: Home
 views:
   - !include /config/lovelace/00_overzicht.yaml

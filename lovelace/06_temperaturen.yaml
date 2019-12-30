@@ -7,8 +7,9 @@ cards:
     control:
       - preset
 
-  - type: weather-forecast
+  - type: custom:weather-card
     entity: weather.huis
+    name: "'t Weer"
 
   - type: custom:mini-graph-card
     hours_to_show: 6
