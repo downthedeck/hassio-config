@@ -1,0 +1,22 @@
+homeassistant:
+
+automation:
+- alias: "thema - selecteer licht thema"
+  trigger:
+    platform: sun
+    event: sunrise
+  condition: []
+  action:
+    service: frontend.set_theme
+    data:
+      name: clear
+
+- alias: "thema - selecteer donker thema"
+  trigger:
+    platform: sun
+    event: sunset
+  condition: []
+  action:
+    service: frontend.set_theme
+    data:
+      name: dark

@@ -1,0 +1,43 @@
+homeassistant:
+
+### Lichtgroepen ###
+light:
+
+  - platform: group
+    name: Hue Plays
+    entities:
+      - light.hue_play_1
+      - light.hue_play_2
+  - platform: group
+    name: Computerverlichting
+    entities:
+      - light.computerlamp
+      - light.hue_plays
+
+automation:
+
+  ### Verlichting achter monitoren en computerlamp aan ###
+  - alias: "verlichting - Computerverlichting aan als computer aan is"
+    trigger:
+      - platform: state
+        entity_id: switch.desktop_computer
+        to: "on"
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: 
+            - light.hue_plays
+            - light.computerlamp
+
+  ### Verlichting achter monitoren en computerlamp uit ###
+  - alias: "verlichting - Computerverlichting uit als computer aan is"
+    trigger:
+      - platform: state
+        entity_id: switch.desktop_computer
+        to: "off"
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: 
+            - light.hue_plays
+            - light.computerlamp

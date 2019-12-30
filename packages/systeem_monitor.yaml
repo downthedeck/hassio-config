@@ -1,0 +1,33 @@
+homeassistant:
+
+sensor:
+  - platform: version
+  
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_use
+      - type: ipv4_address
+        arg: enp0s18
+      - type: processor_use
+      - type: last_boot
+      - type: network_in
+        arg: enp0s18
+      - type: network_out
+        arg: enp0s18
+      - type: throughput_network_in
+        arg: enp0s18
+      - type: throughput_network_out
+        arg: enp0s18
+
+## Proxmox VE
+proxmoxve:
+  - host: 192.168.68.200
+    username: root
+    password: "!Adp56gyd"
+    verify_ssl: false
+    nodes:
+      - node: "pve"
+        vms:
+          - 100

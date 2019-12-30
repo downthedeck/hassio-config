@@ -1,0 +1,90 @@
+homeassistant:
+
+automation:
+  - alias: "notify - storm is thuis"
+    trigger:
+      - platform: state
+        entity_id: person.storm_van_turnhout
+        to: "home"
+    condition:
+      - condition: state
+        entity_id: person.rogier_van_turnhout
+        state: "not_home"
+    action:
+      service: notify.mobile_app_iphone_van_rogier
+      data:
+        title: "Home assistant"
+        message: "Storm is thuis"
+        data:
+          subtitle: "Mensen thuis"
+          push:
+            thread-id: "people@home"
+            sound: "US-EN-Morgan-Freeman-Son-Is-Arriving.wav"
+
+  - alias: "notify - Sam is thuis"
+    trigger:
+      - platform: state
+        entity_id: person.sam_van_turnhout
+        to: "home"
+    condition:
+      - condition: state
+        entity_id: person.rogier_van_turnhout
+        state: "not_home"
+    action:
+      service: notify.mobile_app_iphone_van_rogier
+      data:
+        title: "Home assistant"
+        message: "Sam is thuis"
+        data:
+          subtitle: "Mensen thuis"
+          push:
+            thread-id: "people@home"
+            sound: "US-EN-Morgan-Freeman-Daughter-Is-Arriving.wav"
+
+  - alias: "notify - jelle is thuis"
+    trigger:
+      - platform: state
+        entity_id: person.jelle_van_turnhout
+        to: "home"
+    condition:
+      - condition: state
+        entity_id: person.rogier_van_turnhout
+        state: "not_home"
+    action:
+      service: notify.mobile_app_iphone_van_rogier
+      data:
+        title: "Home assistant"
+        message: "Jelle is thuis"
+        data:
+          subtitle: "Mensen thuis"
+          push:
+            thread-id: "people@home"
+            sound: "US-EN-Morgan-Freeman-Son-Is-Arriving.wav"
+            
+  - alias: "notify - afval buiten zetten vandaag"
+    trigger:
+      - platform: time
+        at: "08:00:00"
+    condition:
+      condition: template
+      value_template: '{{ states("sensor.trash_today") != "Geen" }}'
+    action:
+      service: notify.mobile_app_iphone_van_rogier
+      data_template:
+        message: "Vandaag {{ states('sensor.trash_firstwastetype') }} buitenzetten."
+        title: "Home Assistant"
+        data: 
+          subtitle: "Afval"
+          
+  - alias: "notify - update beschikbaar"
+    trigger:
+      platform: state
+      entity_id: binary_sensor.updater
+      to: "on"
+    action:
+      service: notify.mobile_app_iphone_van_rogier
+      data:
+        title: "Home assistant"
+        message: "Update"
+        data:
+          subtitle: "Er is een update beschikbaar!"

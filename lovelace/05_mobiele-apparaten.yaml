@@ -1,0 +1,64 @@
+title: Mobiele apparaten
+icon: mdi:tablet-cellphone
+cards:
+  - type: entities
+    show_header_toggle: false
+    title: Proximity
+    entities:
+      - proximity.rogier
+      - proximity.storm
+      
+  - type: entities
+    show_header_toggle: false
+    title: IPhone Rogier
+    icon: mdi:cellphone-iphone
+    entities:
+      - sensor.activity
+      - sensor.average_active_pace
+      - sensor.bssid
+      - sensor.battery_level
+      - sensor.battery_state
+      - sensor.connection_type
+      - sensor.distance
+      - sensor.floors_ascended
+      - sensor.floors_descended
+      - sensor.geocoded_location
+      - sensor.last_update_trigger
+      - sensor.sim_1
+      - sensor.ssid
+      - sensor.steps
+      - device_tracker.iphone_van_rogier
+  - type: entities
+    show_header_toggle: false
+    title: IPhone Storm
+    icon: mdi:cellphone-iphone
+    entities:
+      - sensor.activity_2
+      - sensor.average_active_pace_2
+      - sensor.bssid_2
+      - sensor.battery_level_2
+      - sensor.battery_state_2
+      - sensor.connection_type_2
+      - sensor.distance_2
+      - sensor.floors_ascended_2
+      - sensor.floors_descended_2
+      - sensor.geocoded_location_2
+      - sensor.last_update_trigger_2
+      - sensor.sim_1_2
+      - sensor.ssid_2
+      - sensor.steps_2
+      - device_tracker.iphone_van_storm
+  - type: entities
+    show_header_toggle: false
+    title: IPad Rogier
+    icon: mdi:tablet-ipad
+    entities:
+      - sensor.activity_3
+      - sensor.bssid_3
+      - sensor.battery_level_3
+      - sensor.battery_state_3
+      - sensor.connection_type_3
+      - sensor.geocoded_location_3
+      - sensor.last_update_trigger_3
+      - sensor.ssid_3
+      - device_tracker.ipad_van_rogier

@@ -1,0 +1,29 @@
+homeassistant:
+  #########################
+  ### Buitenverlichting ###
+  #########################
+
+## Groeperen
+light:
+  - platform: group
+    name: Buitenverlichting
+    entities:
+      - light.achtertuin
+      - light.voortuin
+
+automation:
+  - alias: "verlichting - buitenverlichting aan bij zonsondergang"
+    trigger:
+      - platform: sun
+        event: sunset
+    action:
+      - service: light.turn_on
+        entity_id: light.buitenverlichting
+
+  - alias: "verlichting - Buitenverlichting uit bij zonsopkomst"
+    trigger:
+      - platform: sun
+        event: sunrise
+    action:
+      - service: light.turn_off
+        entity_id: light.buitenverlichting

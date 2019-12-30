@@ -1,0 +1,80 @@
+# preset_modes: away,comfort,home,sleep
+
+homeassistant:
+
+toon:
+  client_id: !secret toon_clientid
+  client_secret: !secret toon_clientsecret
+
+sensor:
+  - platform: season
+    type: astronomical
+    
+binary_sensor:
+  - platform: workday
+    name: Werkdag
+    country: NL
+  - platform: workday
+    name: Werkdag morgen
+    country: NL
+    days_offset: 1
+    
+automation:
+  - alias: "Klimaat - Away"
+    trigger:
+      - platform: state
+        entity_id: group.people
+        to: "not_home"
+        for:
+          minutes: 15
+    condition:
+      - condition: template
+        value_template: '{{ states("sensor.season") != "summer" }}'
+    action:
+      - service: climate.set_preset_mode
+        data:
+          entity_id: climate.toon_thermostat
+          preset_mode: "away"
+
+  - alias: "Klimaat - Comfort"        
+    trigger:
+      - platform: time
+        at: "19:00:00"
+    condition:
+      - condition: state
+        entity_id: group.people
+        state: "home"
+      - condition: template
+        value_template: '{{ states("sensor.season") != "summer" }}'
+    action:
+      - service: climate.set_preset_mode
+        data:
+          entity_id: climate.toon_thermostat
+          preset_mode: "comfort"
+
+  - alias: "Klimaat - Home"
+    trigger:
+      - platform: state
+        entity_id: group.people
+        to: "home"
+    condition:
+      - condition: template
+        value_template: '{{ states("sensor.season") != "summer" }}'
+    action:
+      - service: climate.set_preset_mode
+        data:
+          entity_id: climate.toon_thermostat
+          preset_mode: "home"
+
+  - alias: "Klimaat - Sleep"        
+    trigger:
+      - platform: time
+        at: "23:00:00"
+    condition:
+      - condition: template
+        value_template: '{{ states("sensor.season") != "summer" }}'
+    action:
+      - service: climate.set_preset_mode
+        data:
+          entity_id: climate.toon_thermostat
+          preset_mode: "sleep"

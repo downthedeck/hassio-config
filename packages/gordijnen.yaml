@@ -1,0 +1,35 @@
+homeassistant:
+
+automation:
+  - alias: "gordijnen - sluit gordijnen bij zonsondergang"
+    trigger:
+      platform: sun
+      event: sunset
+    action:
+      service: cover.close_cover
+      entity_id: group.all_covers
+
+  - alias: "gordijnen - open gordijnen bij zonsopkomst (en niemand thuis)"
+    trigger:
+      platform: sun
+      event: sunrise
+    condition:
+      condition: state
+      entity_id: group.people
+      state: "not_home"
+    action:
+      service: cover.open_cover
+      entity_id: group.all_covers
+
+  - alias: "gordijnen - open gordijnen bij verlaten woning (en zon is op)"
+    trigger:
+      platform: state
+      entity_id: group.people
+      to: "not_home"
+    condition:
+      condition: state
+      entity_id: sun.sun
+      state: "above_horizon"
+    action:
+      service: cover.open_cover
+      entity_id: group.all_covers

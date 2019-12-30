@@ -1,0 +1,61 @@
+title: Temperaturen
+icon: mdi:home-thermometer
+cards:
+  - type: custom:simple-thermostat
+    entity: climate.toon_thermostat
+    name: Toon thermostaat
+    control:
+      - preset
+
+  - type: weather-forecast
+    entity: weather.huis
+
+  - type: custom:mini-graph-card
+    hours_to_show: 6
+    hour24: true
+    animate: true
+    points_per_hour: 10
+    entities:
+      - sensor.woonkamer_sensor_temperature
+  - type: custom:mini-graph-card
+    hours_to_show: 6
+    hour24: true
+    animate: true
+    points_per_hour: 10
+    entities:
+      - sensor.entrance_motion_temperature
+  - type: custom:mini-graph-card
+    hours_to_show: 6
+    hour24: true
+    animate: true
+    points_per_hour: 10
+    entities:
+      - sensor.toilet_motion_temperature
+  - type: custom:mini-graph-card
+    hours_to_show: 6
+    hour24: true
+    animate: true
+    points_per_hour: 10
+    entities:
+      - sensor.bathroom_motion_temperature
+  - type: custom:mini-graph-card
+    hours_to_show: 6
+    hour24: true
+    animate: true
+    points_per_hour: 10
+    entities:
+      - sensor.kitchen_motion_temperature
+  - type: custom:mini-graph-card
+    hours_to_show: 6
+    hour24: true
+    animate: true
+    points_per_hour: 10
+    entities:
+      - sensor.corridor_motion_temperature
+  - type: custom:mini-graph-card
+    hours_to_show: 6
+    hour24: true
+    animate: true
+    points_per_hour: 10
+    entities:
+      - sensor.bijkeuken_motion_temperature

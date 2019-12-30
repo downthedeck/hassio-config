@@ -1,0 +1,8 @@
+homeassistant:
+
+group:
+  people:
+    name: "Aanwezigheid"
+    entities:
+      - person.rogier_van_turnhout
+      - person.storm_van_turnhout

@@ -1,0 +1,226 @@
+homeassistant:
+  customize:
+
+    light.hue_play_1:               # spotlight
+      icon: mdi:spotlight
+    light.hue_play_2:
+      icon: mdi:spotlight
+    light.bloem_1:
+      icon: mdi:spotlight
+    light.bloem_2:
+      icon: mdi:spotlight
+      
+    light.computerlamp:             # desk-lamp
+      icon: mdi:desk-lamp
+          
+    light.salontafel_lamp:            # ceiling-light
+      icon: mdi:ceiling-light
+    light.achterkamerlamp:
+      icon: mdi:ceiling-light
+    light.keuken_2:
+      icon: mdi:ceiling-light
+    light.hal_2:
+      icon: mdi:ceiling-light
+    
+    light.bijkeuken_lamp:          # spotlight-beam
+      icon: mdi:spotlight-beam
+#############
+### setup ###
+#############
+hue:
+  bridges:
+    - host: 192.168.68.132
+      allow_unreachable: true
+      allow_hue_groups: false
+
+############
+### Flux ###
+############
+switch:
+  - platform: flux
+    lights:
+      - light.salontafel_lamp
+    name: flux_salontafel_lamp
+    brightness: 100
+#    start_time: '7:00'
+#    stop_time: '0:00'
+#    start_colortemp: 4500
+#    sunset_colortemp: 2000
+#    stop_colortemp: 1900
+    mode: mired
+  - platform: flux
+    lights:
+      - light.staande_lamp
+    name: flux_staande_lamp
+
+### Lichtgroepen ###
+light:
+  - platform: switch
+    name: Kerstboom
+    entity_id: switch.kerstboom
+
+  - platform: group
+    name: Hue Blooms
+    entities:
+      - light.bloem_1
+      - light.bloem_2
+
+  - platform: group
+    name: Staande lamp
+    entities:
+      - light.staande_lamp_1
+      - light.staande_lamp_2
+      - light.staande_lamp_3
+      - light.staande_lamp_4
+      - light.staande_lamp_5
+      - light.staande_lamp_6
+
+  - platform: group
+    name: Afzuigkap
+    entities:
+      - light.afzuigkap_1
+      - light.afzuigkap_2 
+
+  - platform: group
+    name: Binnenverlichting
+    entities:
+      - light.achterkamerlamp
+      - light.badkamer
+      - light.badkamer_spiegel
+      - light.bijkeuken_lamp
+      - light.hue_blooms
+      - light.computerlamp
+      - light.hal
+      - light.hue_plays
+      - light.keuken
+      - light.lamp_in_slaapkamer
+      - light.overloop
+      - light.sam
+      - light.storm
+      - light.toilet
+      - light.salontafel_lamp
+      - light.staande_lamp
+      - light.kerstboom
+      - light.afzuigkap
+
+automation:
+  ###############################################
+  ### Flux aanzetten bij start Home Assistant ###
+  ###############################################
+  - alias: "verlichting - flux aan bij start"
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - service: switch.turn_on
+        entity_id: switch.flux_salontafel_lamp
+      - service: switch.turn_on
+        entity_id: switch.flux_staande_lamp
+
+  
+  #######################################################    
+  ### Alle verlichting uit bij langdurige afwezigheid ###
+  #######################################################
+  - alias: "verlichting - verlichting uit bij langdurige afwezigheid"
+    trigger:
+      platform: state
+      entity_id: group.people
+      to: "not_home"
+      for:
+        minutes: 10
+    condition:
+      condition: state
+      entity_id: light.binnenverlichting
+      state: "on"
+    action:
+      - service: light.turn_off
+        entity_id: light.binnenverlichting
+      
+  ############################
+  ### Woonkamerverlichting ###
+  ############################
+  - alias: "verlichting - woonkamerverlichting aan bij zonsondergang"
+    trigger: 
+      - platform: sun
+        event: sunset
+      - platform: state
+        entity_id: group.people
+        to: "home"
+    condition:
+      - condition: state
+        entity_id: group.people
+        state: "home"
+      - condition: state
+        entity_id: sun.sun
+        state: "below_horizon"
+    action:
+      - service: light.turn_on
+        data:
+          entity_id:
+            - light.bloem_1
+            - light.bloem_2
+            - light.staande_lamp
+            - light.salontafel_lamp
+
+  - alias: "verlichting - woonkamerlamp aan bij zonsondergang en op tv niets wordt afgespeeld"
+    trigger: 
+      - platform: sun
+        event: sunset
+    condition:
+      - condition: state
+        entity_id: group.people
+        state: "home"
+      - condition: template
+        value_template: '{{ states("media_player.huiskamer_tv") != "off" }}'
+    action:
+      - service: light.turn_on
+        entity_id:
+          - light.salontafel_lamp
+
+
+  ############################
+  ### Bijkeukenverlichting ###
+  ############################
+  - alias: "verlichting - bijkeukenverlichting aan bij beweging"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.bijkeuken_motion_motion
+        to : "on"
+    condition:
+      - condition: numeric_state
+        entity_id: sensor.bijkeuken_motion_light_level
+        below: 6
+    action:
+      - service: light.turn_on
+        entity_id: light.bijkeuken_lamp
+
+  - alias: "verlichting - Bijkeukenverlichting uit bij 5 minuten geen beweging"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.bijkeuken_motion_motion
+        to : "off"
+        for:
+          minutes: 5
+    action:
+      - service: light.turn_off
+        entity_id: light.bijkeuken_lamp
+  
+  #######################################
+  ### Woonkamerlamp uit bij tv kijken ###
+  #######################################
+  - alias: "verlichting - woonkamerlamp uit wanneer tv wordt gekeken"
+    trigger:
+      - platform: template
+        value_template: '{{ states("media_player.huiskamer_tv") != "off" }}'
+      - platform: state
+        entity_id: device_tracker.philipstv
+        to: "home"
+    condition: 
+      - condition: state
+        entity_id: light.salontafel_lamp
+        state: "on"
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.salontafel_lamp
+          transition: 10

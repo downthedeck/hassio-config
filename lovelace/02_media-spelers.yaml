@@ -1,0 +1,69 @@
+#####################################################
+### MEDIASPELERS                                  ###
+#####################################################
+
+title: Media
+icon: mdi:cast-connected
+cards:
+  - type: entities
+    title: Speakers
+    show_header_toggle: false
+    entities:
+      - type: custom:mini-media-player
+        entity: media_player.speakers
+        group: true
+        source: full
+        info: short
+        artwork: cover
+        #hide:
+          #volume: true
+          #power: true
+      - type: custom:mini-media-player
+        entity: media_player.huiskamer
+        group: true
+        hide: 
+          controls: true
+      - type: custom:mini-media-player
+        entity: media_player.keuken_speaker
+        group: true
+        hide: 
+          controls: true
+  
+  - type: entities
+    title: Hubs
+    show_header_toggle: false
+    entities:
+      - type: custom:mini-media-player
+        entity: media_player.rogier_hub
+        group: true
+
+  - type: entities
+    title: Chromecasts
+    show_header_toggle: false
+    entities:
+      - type: custom:mini-media-player
+        entity: media_player.huiskamer_tv
+        group: true
+      - type: custom:mini-media-player
+        entity: media_player.rogiers_tv
+        group: true
+      - type: custom:mini-media-player
+        entity: media_player.jelle_en_storms_tv
+        group: true
+
+  - type: entities
+    title: Home Mini's
+    show_header_toggle: false
+    entities:
+      - type: custom:mini-media-player
+        entity: media_player.huiskamer
+        group: true
+      - type: custom:mini-media-player
+        entity: media_player.storms_speaker
+        group: true
+      - type: custom:mini-media-player
+        entity: media_player.badkamer_speaker
+        group: true
+      - type: custom:mini-media-player
+        entity: media_player.keuken_speaker
+        group: true

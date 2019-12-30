@@ -1,0 +1,205 @@
+#####################################################
+### OVERZICHT                                     ###
+#####################################################
+title: Overzicht
+icon: mdi:home-outline
+cards:
+  ### Bedtime - start ###
+  - type: custom:button-card
+    entity: input_boolean.bedtime
+    name: Bedtijd
+    show_last_changed: true
+    lock:
+      enabled: true
+  ### Bedtime - eind ###
+
+  - type: entities
+    entities:
+      - cover.tradfri_blind
+      - cover.tradfri_blind_2    
+
+  ### Aanwezigheid van personen in huis - start ###
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: picture-elements
+                image: /local/faces/rogier.jpg
+                elements:
+                  - type: image
+                    entity: person.rogier_van_turnhout
+                    image: /local/faces/rogier.jpg
+                    style:
+                      top: 50%
+                      left: 50%
+                      width: 100%
+                    state_filter:
+                      "not_home": grayscale(1)
+              - type: markdown
+                content: > 
+                  {{ states.sensor.geocoded_location.state }}
+          - type: vertical-stack
+            cards:        
+              - type: picture-elements
+                image: /local/faces/storm.jpg
+                elements:
+                  - type: image
+                    entity: person.storm_van_turnhout
+                    image: /local/faces/storm.jpg
+                    style:
+                      top: 50%
+                      left: 50%
+                      width: 100%
+                    state_filter:
+                      "not_home": grayscale(1)
+              - type: markdown
+                content: > 
+                  {{ states.sensor.geocoded_location_2.state }}
+      - type: horizontal-stack
+        cards:
+          - type: picture-elements
+            image: /local/faces/sam.jpg
+            elements:
+              - type: image
+                entity: person.sam_van_turnhout
+                image: /local/faces/sam.jpg
+                style:
+                  top: 50%
+                  left: 50%
+                  width: 100%
+                state_filter:
+                  "not_home": grayscale(1)
+          - type: picture-elements
+            image: /local/faces/jelle.jpg
+            elements:
+              - type: image
+                entity: person.jelle_van_turnhout
+                image: /local/faces/jelle.jpg
+                style:
+                  top: 50%
+                  left: 50%
+                  width: 100%
+                state_filter:
+                  "not_home": grayscale(1)
+  ### Aanwezigheid van personen in huis - eind ###
+
+
+  - type: conditional
+    conditions:
+      - entity: sensor.trash_tomorrow
+        state_not: "Geen"
+    card:
+      type: markdown
+      title: Afval morgen
+      content: >
+        {{ states('sensor.trash_firstwastetype') }}
+  - type: conditional
+    conditions:
+      - entity: sensor.trash_today
+        state_not: "Geen"
+    card:
+      type: markdown
+      title: Afval vandaag
+      content: >
+        {{ states('sensor.trash_firstwastetype') }}
+  
+  - type: custom:simple-thermostat
+    entity: climate.toon_thermostat
+    name: Toon thermostaat
+    control:
+      - preset
+
+  - type: weather-forecast
+    entity: weather.huis
+
+  - type: entity-filter
+    show_empty: false
+    entities:
+      - entity: light.salontafel_lamp
+        tap_action: 
+          action: toggle
+      - entity: light.kerstboom
+        tap_action: 
+          action: toggle
+      - entity: light.staande_lamp
+        tap_action: 
+          action: toggle
+      - entity: light.achterkamerlamp
+        tap_action: 
+          action: toggle
+      - entity: light.badkamer_2
+        tap_action: 
+          action: toggle
+      - entity: light.badkamer_spiegel
+        tap_action: 
+          action: toggle
+      - entity: light.bijkeuken_lamp
+        tap_action: 
+          action: toggle
+      - entity: light.hue_blooms
+        tap_action: 
+          action: toggle
+      - entity: light.computerlamp
+        tap_action: 
+          action: toggle
+      - entity: light.hal
+        tap_action: 
+          action: toggle
+      - entity: light.hue_plays
+        tap_action: 
+          action: toggle
+      - entity: light.keuken
+        tap_action: 
+          action: toggle
+      - entity: light.lamp_in_slaapkamer
+        tap_action: 
+          action: toggle
+      - entity: light.overloop
+        tap_action: 
+          action: toggle
+      - entity: light.sam
+        tap_action: 
+          action: toggle
+      - entity: light.storm
+        tap_action: 
+          action: toggle
+      - entity: light.toilet
+        tap_action: 
+          action: toggle
+      - entity: light.afzuigkap
+        tap_action: 
+          action: toggle
+    state_filter:
+      - "on"
+    card:
+      type: glance
+      title: Lampen
+
+  - type: entity-filter
+    show_empty: false
+    entities:
+      - media_player.huiskamer_tv           #Chromecast
+      - media_player.rogiers_tv             #Chromecast
+      - media_player.jelle_en_storms_tv     #Chromecast
+      - media_player.rogier_hub             #google nest hub
+      - media_player.huiskamer              #home mini
+      - media_player.badkamer_speaker       #home mini
+      - media_player.storms_speaker         #home_mini
+    state_filter:
+      - "playing"
+      - "idle"
+    card:
+      type: glance
+      title: Mediaspelers
+  
+  - type: entities
+    title: Wasmachine
+    show_header_toggle: false
+    entities:
+      - switch.wasmachine
+      - sensor.wasmachine_amps
+      - sensor.wasmachine_watts
+      - input_select.state_washingmachine
+      - switch.desktop_computer

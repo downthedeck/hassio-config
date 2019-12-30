@@ -1,0 +1,286 @@
+#####################################################
+### TEST                                          ###
+#####################################################
+title: Licht
+icon: mdi:lightbulb-on-outline
+cards:
+### Woonkamer - start ###
+  - type: vertical-stack
+    cards:
+    - type: custom:button-card
+      name: Woonkamer
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:ceiling-light
+          entity: light.salontafel_lamp
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:ceiling-light
+          entity: light.achterkamerlamp
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:floor-lamp
+          entity: light.staande_lamp
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:lightbulb-multiple
+          entity: light.hue_blooms
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: custom:button-card
+          color_type: blank-card
+        - type: custom:button-card
+          color_type: blank-card
+### Woonkamer - eind ###
+
+
+### Computerhoek - start ###
+  - type: vertical-stack
+    cards:
+    - type: custom:button-card
+      name: Computerhoek
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:desk-lamp
+          entity: light.computerlamp
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:lightbulb-multiple
+          entity: light.hue_plays
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: custom:button-card
+          color_type: blank-card
+### Computerhoek - eind ###
+
+
+### Keuken -start ###
+  - type: vertical-stack
+    cards:
+    - type: custom:button-card
+      name: Keuken
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:ceiling-light
+          entity: light.keuken
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:lightbulb-multiple
+          entity: light.afzuigkap
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: custom:button-card
+          color_type: blank-card
+### Keuken - eind ###
+
+
+### Overige beneden - start ###
+  - type: vertical-stack
+    cards:
+    - type: custom:button-card
+      name: Overige beneden
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:ceiling-light
+          entity: light.hal
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:lightbulb
+          entity: light.toilet
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:track-light
+          entity: light.bijkeuken_lamp
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:coach-lamp
+          entity: light.achtertuin
+          show_state: true
+          show_last_changed: true
+          lock:
+            enabled: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:coach-lamp
+          entity: light.voortuin
+          show_state: true
+          show_last_changed: true
+          lock:
+            enabled: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: custom:button-card
+          color_type: blank-card
+### Overige beneden - eind ###
+
+
+### Boven verlichting - start ###
+  - type: vertical-stack
+    cards:
+    - type: custom:button-card
+      name: Boven
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:ceiling-light
+          entity: light.lamp_in_slaapkamer
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:ceiling-light
+          entity: light.storm
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:ceiling-light
+          entity: light.sam
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:ceiling-light
+          entity: light.badkamer
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:track-light
+          entity: light.badkamer_spiegel
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+        - type: "custom:button-card"
+          color_type: card
+          icon: mdi:ceiling-light
+          entity: light.overloop
+          show_state: true
+          show_last_changed: true
+          styles:
+            label:
+              - font-size: 0.7em
+          double_tap_action:
+            action: more-info
+### Boven verlichting - eind ###
+
+  - type: entities
+    title: Lichtgroepen
+    show_header_toggle: false
+    entities:
+      - switch.flux_salontafel_lamp
+      - switch.flux_staande_lamp

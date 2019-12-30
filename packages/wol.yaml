@@ -1,0 +1,14 @@
+homeassistant:
+
+wake_on_lan:
+
+switch:
+  - platform: wake_on_lan
+    mac: "E0-D5-5E-F8-67-1A"
+    name: "Desktop Computer"
+    host: 192.168.68.117
+    turn_off:
+      service: hassio.addon_stdin
+      data:
+        addon: core_rpc_shutdown
+        input: Desktop

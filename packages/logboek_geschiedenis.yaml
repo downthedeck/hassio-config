@@ -1,0 +1,36 @@
+## https://www.home-assistant.io/components/recorder/
+## https://www.home-assistant.io/components/history/
+
+homeassistant:
+
+recorder:
+  purge_keep_days: 7
+  purge_interval: 7
+  exclude:
+    domains:
+#      - device_tracker
+#      - media_player
+#      - sensor
+      - binary_sensor
+#      - light
+    entities:
+      - sensor.trash_firstdate
+      - sensor.trash_firstwastetype
+      - sensor.trash_gft_afval
+      - sensor.trash_next
+      - sensor.trash_papier
+      - sensor.trash_today
+      - sensor.trash_tomorrow
+
+
+
+history:
+  exclude:
+    domains:
+#     - device_tracker
+#     - media_player
+#     - binary_sensor
+     - automation
+#     - light
+#     - sensor
+#     - climate

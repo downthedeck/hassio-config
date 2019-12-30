@@ -1,0 +1,29 @@
+title: Afval
+icon: mdi:trash-can
+cards:
+  - type: entities
+    entities:
+      - sensor.trash_firstdate
+      - sensor.trash_firstwastetype
+      - sensor.trash_gft_afval
+      - sensor.trash_next
+      - sensor.trash_papier
+      - sensor.trash_pmd
+      - sensor.trash_today
+      - sensor.trash_tomorrow
+
+  - type: horizontal-stack
+    title: Datums ophalen afval
+    cards:
+    - type: picture-entity
+      entity: sensor.trash_pmd
+      show_name: false
+      image: /local/mijnafvalwijzer/plastic3.png
+    - type: picture-entity
+      entity: sensor.trash_gft_afval
+      show_name: false
+      image: /local/mijnafvalwijzer/gft3.png
+    - type: picture-entity
+      entity: sensor.trash_papier
+      show_name: false
+      image: /local/mijnafvalwijzer/papier3.png

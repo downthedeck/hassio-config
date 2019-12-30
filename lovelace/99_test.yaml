@@ -1,0 +1,126 @@
+title: Test
+icon: mdi:test-tube
+cards:
+  - type: glance
+    title: Entity Teller
+    columns: 3
+    entities:
+      - entity: sensor.device_trackers
+        icon: mdi:account-check
+      - entity: sensor.automatisering
+        icon: mdi:home-automation
+      - entity: sensor.lampen
+        icon: mdi:lightbulb
+      - entity: sensor.media_spelers
+        icon: mdi:google-home
+      - entity: sensor.sensoren
+        icon: mdi:leak
+
+  - type: entities
+    title: NUC/Hass.io status
+    show_header_toggle: false
+    icon: mdi:server-security
+    entities:    
+      - entity: binary_sensor.pve_hassio_running
+        name: Hassio VM
+      - sensor.current_version
+      - sensor.ipv4_address_enp0s18
+      - binary_sensor.updater
+      - sensor.last_boot
+      - sensor.hacs
+      - type: custom:mini-graph-card
+        hours_to_show: 6
+        points_per_hour: 60
+        hour24: true
+        lower_bound: 0
+        upper_bound: 2048
+        smoothing: false
+        entities: 
+          - sensor.memory_use
+      - type: custom:mini-graph-card
+        hours_to_show: 6
+        points_per_hour: 60
+        hour24: true
+        lower_bound: 0
+        upper_bound: 100
+        smoothing: false
+        entities: 
+          - sensor.processor_use
+      - type: custom:mini-graph-card
+        hours_to_show: 6
+        points_per_hour: 60
+        hour24: true
+        lower_bound: 0
+        upper_bound: 100
+        entities: 
+          - sensor.disk_use_percent
+
+
+  - type: entities
+    title: Batterij status motion sensoren
+    show_header_toggle: false
+    icon: mdi:battery
+    entities:
+      - type: custom:bar-card
+        entity: sensor.bathroom_motion_motion_battery_level
+        show_icon: true
+        icon: mdi:memory
+        min: 0
+        max: 100
+      - type: custom:bar-card
+        entity: sensor.corridor_motion_motion_battery_level
+        show_icon: true
+        icon: mdi:memory
+        min: 0
+        max: 100
+      - type: custom:bar-card
+        entity: sensor.woonkamer_sensor_motion_battery_level
+        show_icon: true
+        icon: mdi:memory
+        min: 0
+        max: 100
+      - type: custom:bar-card
+        entity: sensor.bijkeuken_motion_motion_battery_level
+        show_icon: true
+        icon: mdi:memory
+        min: 0
+        max: 100
+      - type: custom:bar-card
+        entity: sensor.entrance_motion_motion_battery_level
+        show_icon: true
+        icon: mdi:memory
+        min: 0
+        max: 100
+      - type: custom:bar-card
+        entity: sensor.kitchen_motion_motion_battery_level
+        show_icon: true
+        icon: mdi:memory
+        min: 0
+        max: 100
+      - type: custom:bar-card
+        entity: sensor.toilet_motion_motion_battery_level
+        show_icon: true
+        icon: mdi:memory
+        min: 0
+        max: 100
+
+  - type: entities
+    title: Ketel
+    show_header_toggle: false
+    icon: mdi:home-thermometer
+    entities:
+      - entity: binary_sensor.boiler_status
+      - entity: binary_sensor.boiler_module_connection
+      - entity: binary_sensor.boiler_preheating
+      - entity: binary_sensor.boiler_burner
+      - entity: binary_sensor.hot_tap_water
+      - type: custom:mini-graph-card
+        hours_to_show: 12
+        hour24: true
+        smoothing: false
+        animate: true
+        lower_bound: 0
+        upper_bound: 100
+        points_per_hour: 60
+        entities: 
+          - sensor.boiler_modulation_level

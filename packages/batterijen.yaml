@@ -1,0 +1,18 @@
+homeassistant:
+
+## custom component: Attributes
+## https://github.com/pilotak/homeassistant-attributes
+
+sensor:
+  - platform: attributes
+    friendly_name: "Batterijen"
+    attribute: battery_level
+    unit_of_measurement: "%"
+    entities: 
+      - binary_sensor.bathroom_motion_motion
+      - binary_sensor.bijkeuken_motion_motion
+      - binary_sensor.corridor_motion_motion
+      - binary_sensor.entrance_motion_motion
+      - binary_sensor.kitchen_motion_motion
+      - binary_sensor.toilet_motion_motion
+      - binary_sensor.woonkamer_sensor_motion

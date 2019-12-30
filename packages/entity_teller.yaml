@@ -1,0 +1,20 @@
+homeassistant:
+
+sensor:
+  - platform: template
+    sensors:
+      media_spelers:
+        friendly_name: Media Spelers
+        value_template: "{{ states.media_player | count }}" 
+      device_trackers:
+        friendly_name: Device Trackers
+        value_template: "{{ states.device_tracker | count }}"
+      lampen:
+        friendly_name: Lampen
+        value_template: "{{ (states.light | count) - 7 }}" # -7 groepen
+      automatisering:
+        friendly_name: Automatiseringen
+        value_template: "{{ states.automation | count }}"
+      sensoren:
+        friendly_name: Sensoren
+        value_template: "{{ states.sensor | count }}"

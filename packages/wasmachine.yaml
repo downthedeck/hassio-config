@@ -1,0 +1,147 @@
+## Wasmachine uit                         : 0.00 Watt
+## wasmachine aan - geen programma gestart: 1.14 - 1.35 Watt
+## Wasmachine spoelen/centrifugeren       : >3.00 - x.xx Watt
+## Wasmachine wassen                      : x.xx - x.xx Watt
+
+homeassistant:
+
+# https://github.com/snarky-snark/home-assistant-variables
+var:
+  wasmachine_status:
+    friendly_name: "Wasmachine status"
+    initial_value: ---
+    icon: mdi:bug
+
+sensor:
+  - platform: template
+    sensors:
+      wasmachine_amps:
+        friendly_name: "Stroomverbruik"
+        unit_of_measurement: 'Amp'
+        value_template: "{{ state_attr('switch.wasmachine', 'current_a') }}"
+      wasmachine_watts:
+        friendly_name: "Vermogen"
+        unit_of_measurement: "Watt"
+        value_template: "{{ state_attr('switch.wasmachine','current_power_w') }}"
+
+input_select:
+  state_washingmachine:
+      name: Wasmachine status
+      options:
+        - Uit  #spanningsloos
+        - Uitgeschakeld
+        - Ingeschakeld
+        - Spoelen/centrifugeren
+        - Wassen
+      icon: mdi:tumble-dryer
+
+automation:
+  - alias: 'Wasmachine - status: Uit'
+    trigger:
+      - platform: state
+        entity_id: switch.wasmachine
+        to: 'off'
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.state_washingmachine
+          option: 'Uit'
+
+  - alias: 'wasmachine - status Uitgeschakeld'
+    trigger:
+      - platform: state
+        entity_id: switch.wasmachine
+        to: 'on'
+      - platform: numeric_state
+        entity_id: sensor.wasmachine_watts
+        below: 1
+        for: '00:01:00'
+    condition:
+    - condition: state
+      entity_id: switch.wasmachine
+      state: 'on'
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.state_washingmachine
+          option: 'Uitgeschakeld'
+
+  - alias: 'Wasmachine - status Ingeschakeld'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.wasmachine_watts
+        above: 1
+        below: 3
+        for: '00:01:00'
+    condition:
+      - condition: state
+        entity_id: switch.wasmachine
+        state: 'on'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: input_select.state_washingmachine
+          state: 'Uitgeschakeld'
+        - condition: state
+          entity_id: input_select.state_washingmachine
+          state: 'Spoelen/centrifugeren'
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.state_washingmachine
+          option: 'Ingeschakeld'
+
+  - alias: 'Wasmachine - status spoelen/centrifugeren'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.wasmachine_watts
+        above: 3
+        below: 550
+        for: '00:01:00'
+    condition:
+      - condition: state
+        entity_id: switch.wasmachine
+        state: 'on'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: input_select.state_washingmachine
+          state: 'Uitgeschakeld'
+        - condition: state
+          entity_id: input_select.state_washingmachine
+          state: 'Ingeschakeld'
+        - condition: state
+          entity_id: input_select.state_washingmachine
+          state: 'Wassen'
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.state_washingmachine
+          option: 'Spoelen/centrifugeren'
+
+  - alias: 'Wasmachine - status Wassen'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.wasmachine_watts
+        above: 1000
+        for: '00:01:00'
+    condition:
+      - condition: state
+        entity_id: switch.wasmachine
+        state: 'on'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: input_select.state_washingmachine
+          state: 'Uitgeschakeld'
+        - condition: state
+          entity_id: input_select.state_washingmachine
+          state: 'Ingeschakeld'
+        - condition: state
+          entity_id: input_select.state_washingmachine
+          state: 'Spoelen/centrifugeren'
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.state_washingmachine
+          option: 'Wassen'
