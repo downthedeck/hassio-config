@@ -1,29 +1,5 @@
 homeassistant:
-  customize:
 
-    light.hue_play_1:               # spotlight
-      icon: mdi:spotlight
-    light.hue_play_2:
-      icon: mdi:spotlight
-    light.bloem_1:
-      icon: mdi:spotlight
-    light.bloem_2:
-      icon: mdi:spotlight
-      
-    light.computerlamp:             # desk-lamp
-      icon: mdi:desk-lamp
-          
-    light.salontafel_lamp:            # ceiling-light
-      icon: mdi:ceiling-light
-    light.achterkamerlamp:
-      icon: mdi:ceiling-light
-    light.keuken_2:
-      icon: mdi:ceiling-light
-    light.hal_2:
-      icon: mdi:ceiling-light
-    
-    light.bijkeuken_lamp:          # spotlight-beam
-      icon: mdi:spotlight-beam
 #############
 ### setup ###
 #############
@@ -40,8 +16,7 @@ switch:
   - platform: flux
     lights:
       - light.salontafel_lamp
-    name: flux_salontafel_lamp
-    brightness: 100
+    name: Flux salontafellamp
 #    start_time: '7:00'
 #    stop_time: '0:00'
 #    start_colortemp: 4500
@@ -51,7 +26,7 @@ switch:
   - platform: flux
     lights:
       - light.staande_lamp
-    name: flux_staande_lamp
+    name: Flux staandelamp
 
 ### Lichtgroepen ###
 light:

@@ -279,8 +279,16 @@ cards:
 ### Boven verlichting - eind ###
 
   - type: entities
-    title: Lichtgroepen
+    title: Flux lichtregeling
     show_header_toggle: false
     entities:
-      - switch.flux_salontafel_lamp
-      - switch.flux_staande_lamp
+      - type: "custom:button-card"
+        color_type: card
+        icon: mdi:ceiling-light
+        entity: switch.flux_salontafel_lamp
+        layout: icon_name
+      - type: "custom:button-card"
+        color_type: card
+        icon: mdi:floor-lamp
+        entity: switch.flux_staande_lamp
+        layout: icon_name

@@ -9,6 +9,8 @@ automation:
       service: cover.close_cover
       entity_id: group.all_covers
 
+
+### Gordijnen open - start ###
   - alias: "gordijnen - open gordijnen bij zonsopkomst (en niemand thuis)"
     trigger:
       platform: sun
@@ -20,7 +22,9 @@ automation:
     action:
       service: cover.open_cover
       entity_id: group.all_covers
+### Gordijnen open - eind ###
 
+### Gordijnen sluiten - start ###
   - alias: "gordijnen - open gordijnen bij verlaten woning (en zon is op)"
     trigger:
       platform: state
@@ -33,3 +37,4 @@ automation:
     action:
       service: cover.open_cover
       entity_id: group.all_covers
+### Gordijnen sluiten - eind ###
