@@ -1,0 +1,34 @@
+custom_header:
+  header_text: '{{ user }}'
+  compact_mode: true
+
+resources:
+  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+    type: module
+
+  - url: /community_plugin/bar-card/bar-card.js
+    type: js
+
+  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+    type: module
+    
+  - url: /community_plugin/simple-thermostat/simple-thermostat.js
+    type: module
+
+  - url: /community_plugin/button-card/button-card.js
+    type: module
+
+  - url: /community_plugin/custom-header/custom-header.js
+    type: module
+
+
+title: Home
+views:
+  - !include /config/lovelace/00_overzicht.yaml
+  - !include /config/lovelace/01_licht.yaml
+  - !include /config/lovelace/02_media-spelers.yaml
+  - !include /config/lovelace/03_afval.yaml
+  - !include /config/lovelace/04_camera.yaml
+  - !include /config/lovelace/05_mobiele-apparaten.yaml
+  - !include /config/lovelace/06_temperaturen.yaml
+  - !include /config/lovelace/99_test.yaml
