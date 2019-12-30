@@ -1,7 +1,0 @@
-homeassistant:
-
-camera:
-  - platform: foscam
-    ip: 192.168.68.103
-    username: !secret foscam_username 'rogier'
-    password: !secret foscam_password 'adp56gyd'
