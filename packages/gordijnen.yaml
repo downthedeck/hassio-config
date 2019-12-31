@@ -1,5 +1,13 @@
 homeassistant:
 
+cover:
+  - platform: group
+    name: Gordijnen
+    entities:
+      - cover.tradfri_blind
+      - cover.tradfri_blind_2
+
+### Gordijnen sluiten - start ###
 automation:
   - alias: "gordijnen - sluit gordijnen bij zonsondergang"
     trigger:
@@ -8,6 +16,7 @@ automation:
     action:
       service: cover.close_cover
       entity_id: group.all_covers
+### Gordijnen sluiten - eind ###
 
 
 ### Gordijnen open - start ###
@@ -22,9 +31,7 @@ automation:
     action:
       service: cover.open_cover
       entity_id: group.all_covers
-### Gordijnen open - eind ###
 
-### Gordijnen sluiten - start ###
   - alias: "gordijnen - open gordijnen bij verlaten woning (en zon is op)"
     trigger:
       platform: state

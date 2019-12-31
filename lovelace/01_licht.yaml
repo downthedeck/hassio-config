@@ -285,10 +285,13 @@ cards:
       - type: "custom:button-card"
         color_type: card
         icon: mdi:ceiling-light
-        entity: switch.flux_salontafel_lamp
+        entity: switch.flux_salontafellamp
         layout: icon_name
+      - type: custom:slider-entity-row
+        entity: light.salontafel_lamp
+        full_row: true
       - type: "custom:button-card"
         color_type: card
         icon: mdi:floor-lamp
-        entity: switch.flux_staande_lamp
+        entity: switch.flux_staandelamp
         layout: icon_name

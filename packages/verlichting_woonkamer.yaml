@@ -25,8 +25,14 @@ switch:
     mode: mired
   - platform: flux
     lights:
-      - light.staande_lamp
+      - light.staande_lamp_1
+      - light.staande_lamp_2
+      - light.staande_lamp_3
+      - light.staande_lamp_4
+      - light.staande_lamp_5
+      - light.staande_lamp_6
     name: Flux staandelamp
+    mode: mired
 
 ### Lichtgroepen ###
 light:

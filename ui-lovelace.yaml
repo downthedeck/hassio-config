@@ -1,5 +1,4 @@
 custom_header:
-  header_text: '{{ user }}'
   compact_mode: true
 
 resources:
@@ -23,7 +22,10 @@ resources:
 
   - url: /community_plugin/weather-card/weather-card.js
     type: module
-    
+
+  - url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
+    type: module
+
 title: Home
 views:
   - !include /config/lovelace/00_overzicht.yaml

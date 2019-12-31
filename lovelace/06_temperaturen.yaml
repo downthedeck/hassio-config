@@ -1,5 +1,5 @@
 title: Temperaturen
-icon: mdi:home-thermometer
+icon: mdi:thermostat
 cards:
   - type: custom:simple-thermostat
     entity: climate.toon_thermostat

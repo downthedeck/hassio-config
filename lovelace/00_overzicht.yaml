@@ -15,8 +15,13 @@ cards:
 
   - type: entities
     entities:
+      - type: custom:slider-entity-row
+        hide_state: false
+        entity: cover.gordijnen
+
       - cover.tradfri_blind
-      - cover.tradfri_blind_2    
+      - cover.tradfri_blind_2
+      - group.all_covers
 
   ### Aanwezigheid van personen in huis - start ###
   - type: vertical-stack

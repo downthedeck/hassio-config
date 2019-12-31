@@ -1,5 +1,5 @@
 title: Test
-icon: mdi:test-tube
+icon: mdi:thermostat
 cards:
   - type: glance
     title: Entity Teller
@@ -15,6 +15,11 @@ cards:
         icon: mdi:google-home
       - entity: sensor.sensoren
         icon: mdi:leak
+      - entity: sensor.binary_sensors
+        icon: mdi:circle-outline
+      - entity: sensor.input_booleans
+      - entity: sensor.covers
+        icon: mdi:blinds
 
   - type: entities
     title: NUC/Hass.io status
