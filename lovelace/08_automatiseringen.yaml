@@ -1,0 +1,85 @@
+title: Automatiseringen
+icon: mdi:home-automation
+cards:
+  - type: entities
+    title: Verlichting
+    icon: mdi:home-automation
+    entities:
+      - group.all_automations
+      - automation.verlichting_bijkeukenverlichting_aan_bij_beweging
+      - automation.verlichting_bijkeukenverlichting_uit_bij_5_minuten_geen_beweging
+      - automation.verlichting_buitenverlichting_aan_bij_zonsondergang
+      - automation.verlichting_buitenverlichting_uit_bij_zonsopkomst
+      - automation.verlichting_computerverlichting_aan_als_computer_aan_is
+      - automation.verlichting_computerverlichting_uit_als_computer_aan_is
+      - automation.verlichting_flux_aan_bij_start
+      - automation.verlichting_woonkamerlamp_aan_bij_zonsondergang_en_op_tv_niets_wordt_afgespeeld
+      - automation.verlichting_woonkamerverlichting_aan_bij_zonsondergang
+      - automation.verlichting_woonkamerlamp_uit_wanneer_tv_wordt_gekeken
+      - automation.verlichting_verlichting_uit_bij_langdurige_afwezigheid
+
+  - type: entities
+    title: Gordijnen
+    icon: mdi:home-automation
+    entities:
+      - automation.gordijnen_open_gordijnen_bij_zonsopkomst_en_niemand_thuis
+      - automation.gordijnen_open_gordijnen_bij_verlaten_woning_en_zon_is_op
+      - automation.gordijnen_sluit_gordijnen_bij_zonsondergang
+
+  - type: entities
+    title: Klimaat
+    icon: mdi:home-automation
+    entities:
+      - automation.klimaat_home
+      - automation.klimaat_sleep
+      - automation.klimaat_comfort
+      - automation.klimaat_away
+
+  - type: entities
+    title: Notify
+    icon: mdi:home-automation
+    entities:
+      - automation.notify_sam_is_thuis
+      - automation.notify_jelle_is_thuis
+      - automation.notify_storm_is_thuis
+      - automation.notify_update_beschikbaar
+      - automation.notify_afval_buiten_zetten_vandaag
+
+  - type: entities
+    title: Media spelers
+    icon: mdi:home-automation
+    entities:
+      - automation.mediaspeler_badkamer_speaker_uit_als_licht_uit_is
+
+  - type: entities
+    title: Thema
+    icon: mdi:home-automation
+    entities:
+      - automation.thema_selecteer_licht_thema
+      - automation.thema_selecteer_donker_thema
+
+  - type: entities
+    title: Bedtijd
+    icon: mdi:home-automation
+    entities:
+      - automation.bedtijd_direct
+      - automation.bedtijd_na_3_minuten
+
+  - type: entities
+    title: Afval
+    icon: mdi:home-automation
+    entities:
+      - automation.afval_melding_vandaag_buitenzetten
+      - automation.afval_melding_morgen_buitenzetten
+      - automation.afval_blokkeer_afval_melding_voor_een_specifieke_tijd
+      - automation.afval_reset_vaiabele_msg_count
+
+  - type: entities
+    title: Wasmachine
+    icon: mdi:home-automation
+    entities:
+      - automation.wasmachine_status_uit
+      - automation.wasmachine_status_ingeschakeld
+      - automation.wasmachine_status_uitgeschakeld
+      - automation.wasmachine_status_spoelen_centrifugeren
+      - automation.wasmachine_status_wassen

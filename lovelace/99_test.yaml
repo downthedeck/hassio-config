@@ -1,5 +1,5 @@
 title: Test
-icon: mdi:thermostat
+icon: mdi:server-network
 cards:
   - type: glance
     title: Entity Teller
@@ -32,10 +32,10 @@ cards:
         name: Hassio-dev VM
       - entity: binary_sensor.pve_plextest_running
         name: Plex CT
+      - sensor.last_boot
       - sensor.current_version
       - sensor.ipv4_address_enp0s18
       - binary_sensor.updater
-      - sensor.last_boot
       - sensor.hacs
       - type: custom:mini-graph-card
         hours_to_show: 6
@@ -114,22 +114,34 @@ cards:
         max: 100
 
   - type: entities
-    title: Ketel
+    title: Toon/Ketel
     show_header_toggle: false
-    icon: mdi:home-thermometer
+    icon: mdi:thermostat
     entities:
-      - entity: binary_sensor.boiler_status
-      - entity: binary_sensor.boiler_module_connection
-      - entity: binary_sensor.boiler_preheating
-      - entity: binary_sensor.boiler_burner
-      - entity: binary_sensor.hot_tap_water
-      - type: custom:mini-graph-card
-        hours_to_show: 12
-        hour24: true
-        smoothing: false
-        animate: true
-        lower_bound: 0
-        upper_bound: 100
-        points_per_hour: 60
-        entities: 
-          - sensor.boiler_modulation_level
+      - binary_sensor.toon_program
+      - binary_sensor.toon_holiday_mode
+      - binary_sensor.boiler_status
+      - binary_sensor.boiler_module_connection
+      - binary_sensor.opentherm_connection
+      - binary_sensor.boiler_preheating
+      - binary_sensor.boiler_burner
+      - binary_sensor.hot_tap_water
+      - sensor.boiler_modulation_level
+
+  - type: entities
+    title: Netwerk
+    show_header_toggle: false
+    icon: mdi:router-wireless
+    entities:
+      - sensor.m9plus_bytes_sent
+      - sensor.m9plus_bytes_received
+      - sensor.m9plus_kbyte_sec_sent
+      - sensor.m9plus_kbyte_sec_received
+      - sensor.m9plus_packets_sent
+      - sensor.m9plus_packets_received
+      - sensor.m9plus_packets_sec_sent
+      - sensor.m9plus_packets_sec_received
+      - sensor.network_in_enp0s18
+      - sensor.network_out_enp0s18
+      - sensor.network_throughput_in_enp0s18
+      - sensor.network_throughput_out_enp0s18

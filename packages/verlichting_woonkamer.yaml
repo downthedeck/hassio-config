@@ -141,7 +141,6 @@ automation:
             - light.bloem_1
             - light.bloem_2
             - light.staande_lamp
-            - light.salontafel_lamp
 
   - alias: "verlichting - woonkamerlamp aan bij zonsondergang en op tv niets wordt afgespeeld"
     trigger: 
@@ -152,40 +151,13 @@ automation:
         entity_id: group.people
         state: "home"
       - condition: template
-        value_template: '{{ states("media_player.huiskamer_tv") != "off" }}'
+        value_template: '{{ states("media_player.huiskamer_tv") == "off" }}'
     action:
       - service: light.turn_on
         entity_id:
           - light.salontafel_lamp
 
 
-  ############################
-  ### Bijkeukenverlichting ###
-  ############################
-  - alias: "verlichting - bijkeukenverlichting aan bij beweging"
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.bijkeuken_motion_motion
-        to : "on"
-    condition:
-      - condition: numeric_state
-        entity_id: sensor.bijkeuken_motion_light_level
-        below: 6
-    action:
-      - service: light.turn_on
-        entity_id: light.bijkeuken_lamp
-
-  - alias: "verlichting - Bijkeukenverlichting uit bij 5 minuten geen beweging"
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.bijkeuken_motion_motion
-        to : "off"
-        for:
-          minutes: 5
-    action:
-      - service: light.turn_off
-        entity_id: light.bijkeuken_lamp
-  
   #######################################
   ### Woonkamerlamp uit bij tv kijken ###
   #######################################

@@ -7,11 +7,11 @@ recorder:
   purge_keep_days: 7
   purge_interval: 7
   exclude:
-    domains:
+#    domains:
 #      - device_tracker
 #      - media_player
 #      - sensor
-      - binary_sensor
+#      - binary_sensor
 #      - light
     entities:
       - sensor.trash_firstdate
@@ -22,15 +22,15 @@ recorder:
       - sensor.trash_today
       - sensor.trash_tomorrow
 
-
+logbook:
 
 history:
-  exclude:
-    domains:
+#  exclude:
+#    domains:
 #     - device_tracker
 #     - media_player
 #     - binary_sensor
-     - automation
+#     - automation
 #     - light
 #     - sensor
 #     - climate

@@ -63,3 +63,17 @@ cards:
       - sensor.last_update_trigger_3
       - sensor.ssid_3
       - device_tracker.ipad_van_rogier
+  - type: entities
+    show_header_toggle: false
+    title: IPad Rogier
+    icon: mdi:tablet-ipad
+    entities:
+      - sensor.bssid_4
+      - sensor.battery_level_4
+      - sensor.battery_state_4
+      - sensor.connection_type_4
+      - sensor.geocoded_location_4
+      - sensor.last_update_trigger_4
+      - sensor.sim_4
+      - sensor.ssid_4
+      - device_tracker.iphone_van_jelle

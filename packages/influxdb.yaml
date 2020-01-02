@@ -8,3 +8,10 @@ influxdb:
   password: !secret influxdb_password
   max_retries: 3
   default_measurement: state
+
+# Router gegevens
+upnp:
+  port_mapping: true
+  ports:
+    hass: 8000
+    8080: 8080
