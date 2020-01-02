@@ -7,6 +7,7 @@ cards:
     entities:
       - proximity.rogier
       - proximity.storm
+      - proximity.jelle
       
   - type: entities
     show_header_toggle: false

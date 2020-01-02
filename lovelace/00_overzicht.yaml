@@ -60,30 +60,40 @@ cards:
                   {{ states.sensor.geocoded_location_2.state }}
       - type: horizontal-stack
         cards:
-          - type: picture-elements
-            image: /local/faces/sam.jpg
-            elements:
-              - type: image
-                entity: person.sam_van_turnhout
+          - type: vertical-stack
+            cards:
+              - type: picture-elements
                 image: /local/faces/sam.jpg
-                style:
-                  top: 50%
-                  left: 50%
-                  width: 100%
-                state_filter:
-                  "not_home": grayscale(1)
-          - type: picture-elements
-            image: /local/faces/jelle.jpg
-            elements:
-              - type: image
-                entity: person.jelle_van_turnhout
+                elements:
+                  - type: image
+                    entity: person.sam_van_turnhout
+                    image: /local/faces/sam.jpg
+                    style:
+                      top: 50%
+                      left: 50%
+                      width: 100%
+                    state_filter:
+                      "not_home": grayscale(1)
+              - type: markdown
+                content: > 
+                  {{ states.sensor.geocoded_location_x.state }}
+          - type: vertical-stack
+            cards:
+              - type: picture-elements
                 image: /local/faces/jelle.jpg
-                style:
-                  top: 50%
-                  left: 50%
-                  width: 100%
-                state_filter:
-                  "not_home": grayscale(1)
+                elements:
+                  - type: image
+                    entity: person.jelle_van_turnhout
+                    image: /local/faces/jelle.jpg
+                    style:
+                      top: 50%
+                      left: 50%
+                      width: 100%
+                    state_filter:
+                      "not_home": grayscale(1)
+              - type: markdown
+                content: > 
+                  {{ states.sensor.geocoded_location_4.state }}
   ### Aanwezigheid van personen in huis - eind ###
 
 

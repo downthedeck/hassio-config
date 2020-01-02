@@ -32,3 +32,5 @@ proxmoxve:
         vms:
           - 100
           - 101
+        containers:
+          - 102

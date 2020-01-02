@@ -1,0 +1,18 @@
+homeassistant:
+
+automation:
+## zet speler uit als het licht uit is - start ##
+  - alias: "mediaspeler - badkamer speaker uit als licht uit is"
+    trigger:
+      - platform: state
+        entity_id: light.badkamer
+        to: "off"
+        for:
+          minutes: 1
+    action:
+      - service: media_player.turn_off
+        entity_id: media_player.badkamer_speaker
+## zet speler uit als het licht uit is - eind ##
+
+
+## - start ##

@@ -5,7 +5,14 @@ proximity:
     devices:
       - device_tracker.iphone_van_rogier
     tolerance: 50
+    unit_of_measurement: m
   storm:
     devices:
       - device_tracker.iphone_van_storm
     tolerance: 50
+    unit_of_measurement: m
+  jelle:
+    devices:
+      - device_tracker.iphone_van_jelle
+    tolerance: 50
+    unit_of_measurement: m
