@@ -4,3 +4,5 @@ group.people:
   icon: mdi:account-supervisor
 device_tracker.iphone_van_storm:
   entity_picture: /local/faces/storm.jpg
+person.storm_van_turnhout:
+  entity_picture: /local/faces/storm.jpg
