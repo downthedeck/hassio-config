@@ -15,4 +15,21 @@ automation:
 ## zet speler uit als het licht uit is - eind ##
 
 
-## - start ##
+## mediaspelers uit wanneer het bedtijd is - start ##
+  - alias: "mediaspeler - Alle mediaspelers uit wanneer het bedtijd is"
+    trigger:
+      platform: state
+      entity_id: input_boolean.bedtime
+      to: "on"
+    action:
+      - service: media_player.turn_off
+        entity_id: media_player.speakers
+      - service: media_player.turn_off
+        entity_id: media_player.keuken_speaker
+      - service: media_player.turn_off
+        entity_id: media_player.huiskamer
+      - service: media_player.turn_off
+        entity_id: media_player.huiskamer_speaker
+      - service: media_player.turn_off
+        entity_id: media_player.storms_speaker
+## mediaspelers uit wanneer het bedtijd is - eind ##
