@@ -146,10 +146,16 @@ automation:
     trigger: 
       - platform: sun
         event: sunset
+      - platform: state
+        entity_id: group.people
+        to: "home"
     condition:
       - condition: state
         entity_id: group.people
         state: "home"
+      - condition: state
+        entity_id: sun.sun
+        state: "below_horizon"
       - condition: template
         value_template: '{{ states("media_player.huiskamer_tv") == "off" }}'
     action:
@@ -165,9 +171,6 @@ automation:
     trigger:
       - platform: template
         value_template: '{{ states("media_player.huiskamer_tv") != "off" }}'
-      - platform: state
-        entity_id: device_tracker.philipstv
-        to: "home"
     condition: 
       - condition: state
         entity_id: light.salontafel_lamp

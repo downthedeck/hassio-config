@@ -50,6 +50,7 @@ cards:
     icon: mdi:home-automation
     entities:
       - automation.mediaspeler_badkamer_speaker_uit_als_licht_uit_is
+      - automation.mediaspeler_alle_mediaspelers_uit_wanneer_het_bedtijd_is
 
   - type: entities
     title: Thema
