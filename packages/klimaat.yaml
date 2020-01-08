@@ -36,6 +36,7 @@ automation:
           entity_id: climate.toon_thermostat
           preset_mode: "away"
 
+
   - alias: "Klimaat - Comfort"        
     trigger:
       - platform: time
@@ -52,7 +53,8 @@ automation:
           entity_id: climate.toon_thermostat
           preset_mode: "comfort"
 
-  - alias: "Klimaat - Home"
+
+  - alias: "Klimaat - (Home) op werkdagen"
     trigger:
       - platform: state
         entity_id: group.people
@@ -60,16 +62,22 @@ automation:
     condition:
       - condition: template
         value_template: '{{ states("sensor.season") != "summer" }}'
+      - condition: state
+        entity_id: binary_sensor.workday
+        state: "on"
+      - condition: time
+        after: "14:00:00"
     action:
       - service: climate.set_preset_mode
         data:
           entity_id: climate.toon_thermostat
           preset_mode: "home"
 
+
   - alias: "Klimaat - Sleep"        
     trigger:
       - platform: time
-        at: "23:00:00"
+        at: "00:00:00"
     condition:
       - condition: template
         value_template: '{{ states("sensor.season") != "summer" }}'
