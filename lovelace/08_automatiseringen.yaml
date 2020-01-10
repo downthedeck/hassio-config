@@ -30,7 +30,7 @@ cards:
     title: Klimaat
     icon: mdi:home-automation
     entities:
-      - automation.klimaat_home
+      - automation.klimaat_home_op_werkdagen
       - automation.klimaat_sleep
       - automation.klimaat_comfort
       - automation.klimaat_away

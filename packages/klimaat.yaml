@@ -27,9 +27,6 @@ automation:
         to: "not_home"
         for:
           minutes: 15
-    condition:
-      - condition: template
-        value_template: '{{ states("sensor.season") != "summer" }}'
     action:
       - service: climate.set_preset_mode
         data:
@@ -63,7 +60,7 @@ automation:
       - condition: template
         value_template: '{{ states("sensor.season") != "summer" }}'
       - condition: state
-        entity_id: binary_sensor.workday
+        entity_id: binary_sensor.werkdag
         state: "on"
       - condition: time
         after: "14:00:00"
@@ -78,9 +75,6 @@ automation:
     trigger:
       - platform: time
         at: "00:00:00"
-    condition:
-      - condition: template
-        value_template: '{{ states("sensor.season") != "summer" }}'
     action:
       - service: climate.set_preset_mode
         data:

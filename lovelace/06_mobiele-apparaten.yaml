@@ -29,6 +29,7 @@ cards:
       - sensor.ssid
       - sensor.steps
       - device_tracker.iphone_van_rogier
+
   - type: entities
     show_header_toggle: false
     title: IPhone Storm
@@ -49,6 +50,7 @@ cards:
       - sensor.ssid_2
       - sensor.steps_2
       - device_tracker.iphone_van_storm
+
   - type: entities
     show_header_toggle: false
     title: IPad Rogier
@@ -63,9 +65,11 @@ cards:
       - sensor.last_update_trigger_3
       - sensor.ssid_3
       - device_tracker.ipad_van_rogier
+
+
   - type: entities
     show_header_toggle: false
-    title: IPad Rogier
+    title: Iphone Jelle
     icon: mdi:tablet-ipad
     entities:
       - sensor.bssid_4
