@@ -17,7 +17,7 @@ cards:
     entities:
       - cover.tradfri_blind
       - cover.tradfri_blind_2
-      - group.all_covers
+      - cover.gordijnen
 
   ### Aanwezigheid van personen in huis - start ###
   - type: vertical-stack

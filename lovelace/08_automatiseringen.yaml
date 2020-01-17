@@ -5,7 +5,6 @@ cards:
     title: Verlichting
     icon: mdi:home-automation
     entities:
-      - group.all_automations
       - automation.verlichting_bijkeukenverlichting_aan_bij_beweging
       - automation.verlichting_bijkeukenverlichting_uit_bij_5_minuten_geen_beweging
       - automation.verlichting_buitenverlichting_aan_bij_zonsondergang

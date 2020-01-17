@@ -39,7 +39,7 @@ cards:
       - sensor.hacs
       - type: custom:mini-graph-card
         hours_to_show: 6
-        points_per_hour: 60
+        points_per_hour: 120
         hour24: true
         lower_bound: 0
         upper_bound: 2048
@@ -48,7 +48,7 @@ cards:
           - sensor.memory_use
       - type: custom:mini-graph-card
         hours_to_show: 6
-        points_per_hour: 60
+        points_per_hour: 120
         hour24: true
         lower_bound: 0
         upper_bound: 100
@@ -57,7 +57,7 @@ cards:
           - sensor.processor_use
       - type: custom:mini-graph-card
         hours_to_show: 6
-        points_per_hour: 60
+        points_per_hour: 120
         hour24: true
         lower_bound: 0
         upper_bound: 100
@@ -135,8 +135,8 @@ cards:
     entities:
       - sensor.m9plus_bytes_sent
       - sensor.m9plus_bytes_received
-      - sensor.m9plus_kbyte_sec_sent
-      - sensor.m9plus_kbyte_sec_received
+      - sensor.m9plus_kb_sec_sent
+      - sensor.m9plus_kb_sec_received
       - sensor.m9plus_packets_sent
       - sensor.m9plus_packets_received
       - sensor.m9plus_packets_sec_sent
