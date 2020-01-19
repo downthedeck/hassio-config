@@ -117,23 +117,37 @@ automation:
       - service: light.turn_off
         entity_id: light.binnenverlichting
       
-  ############################
-  ### Woonkamerverlichting ###
-  ############################
+  ###########################################
+  ### Woonkamerverlichting bij thuiskomst ###
+  ###########################################
   - alias: "verlichting - woonkamerverlichting aan bij zonsondergang"
     trigger: 
-      - platform: sun
-        event: sunset
       - platform: state
         entity_id: group.people
         to: "home"
     condition:
       - condition: state
-        entity_id: group.people
-        state: "home"
-      - condition: state
         entity_id: sun.sun
         state: "below_horizon"
+    action:
+      - service: light.turn_on
+        data:
+          entity_id:
+            - light.bloem_1
+            - light.bloem_2
+            - light.staande_lamp
+
+  ######################################################
+  ### Woonkamerverlichting wanneer mensen thuis zijn ###
+  ######################################################
+  - alias: "verlichting - woonkamerverlichting aan bij zonsondergang"
+    trigger: 
+      - platform: sun
+        event: sunset
+    condition:
+      - condition: state
+        entity_id: group.people
+        state: "home"
     action:
       - service: light.turn_on
         data:

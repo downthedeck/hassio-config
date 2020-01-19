@@ -1,6 +1,12 @@
 title: Test
 icon: mdi:server-network
 cards:
+
+  - type: entities
+    title: Diversen
+    entities:
+      - sun.sun
+
   - type: glance
     title: Entity Teller
     columns: 3
