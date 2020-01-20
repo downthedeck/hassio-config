@@ -120,7 +120,7 @@ automation:
   ###########################################
   ### Woonkamerverlichting bij thuiskomst ###
   ###########################################
-  - alias: "verlichting - woonkamerverlichting aan bij zonsondergang"
+  - alias: "verlichting - woonkamerverlichting aan bij thuiskomst"
     trigger: 
       - platform: state
         entity_id: group.people
@@ -156,17 +156,15 @@ automation:
             - light.bloem_2
             - light.staande_lamp
 
-  - alias: "verlichting - woonkamerlamp aan bij zonsondergang en op tv niets wordt afgespeeld"
+  ########################################
+  ## salontafellamp aan bij thuiskomst ##
+  ########################################
+  - alias: "verlichting - Salontafellamp aan bij thuiskomst"
     trigger: 
-      - platform: sun
-        event: sunset
       - platform: state
         entity_id: group.people
         to: "home"
     condition:
-      - condition: state
-        entity_id: group.people
-        state: "home"
       - condition: state
         entity_id: sun.sun
         state: "below_horizon"
@@ -177,6 +175,23 @@ automation:
         entity_id:
           - light.salontafel_lamp
 
+  ###########################################
+  ## salontafel lamp aan bij zonsondergang ##
+  ###########################################
+  - alias: "verlichting - salontafellamp aan bij zonsondergang"
+    trigger: 
+      - platform: sun
+        event: sunset
+    condition:
+      - condition: state
+        entity_id: group.people
+        state: "home"
+      - condition: template
+        value_template: '{{ states("media_player.huiskamer_tv") == "off" }}'
+    action:
+      - service: light.turn_on
+        entity_id:
+          - light.salontafel_lamp
 
   #######################################
   ### Woonkamerlamp uit bij tv kijken ###
