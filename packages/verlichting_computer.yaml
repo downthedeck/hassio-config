@@ -8,6 +8,7 @@ light:
     entities:
       - light.hue_play_1
       - light.hue_play_2
+      
   - platform: group
     name: Computerverlichting
     entities:

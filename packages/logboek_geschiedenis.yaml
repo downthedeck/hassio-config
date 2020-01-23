@@ -1,5 +1,6 @@
 ## https://www.home-assistant.io/components/recorder/
 ## https://www.home-assistant.io/components/history/
+## https://www.home-assistant.io/integrations/logbook/
 
 homeassistant:
 
@@ -23,7 +24,11 @@ recorder:
       - sensor.trash_tomorrow
 
 logbook:
-
+  exclude:
+    entities:
+      - binary_sensor.woonkamer_sensor_motion
+      - binary_sensor.kitchen_motion_motion
+      
 history:
 #  exclude:
 #    domains:
