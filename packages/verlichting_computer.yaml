@@ -15,8 +15,31 @@ light:
       - light.computerlamp
       - light.hue_plays
 
-automation:
+scene:
+  - name: "normaal"
+    entities:
+      light.hue_plays:
+        state: on
+        brightness: 255
+        rgb_color: [ 191, 29, 255 ] # purple
+      light.computerlamp: on
+  - name: "na 11 uur"
+    entities:
+      light.hue_plays:
+        state: on
+        brightness: 255
+        rgb_color: [ 255, 190, 44 ] # orange
+      light.computerlamp: on
+  - name: "na 00 uur"
+    entities:
+      light.hue_plays:
+        state: on
+        brightness: 255
+        rgb_color: [ 255, 0, 0 ] # red
+      light.computerlamp: on 
 
+
+automation:
   ### Verlichting achter monitoren en computerlamp aan ###
   - alias: "verlichting - Computerverlichting aan als computer aan is"
     trigger:
@@ -24,11 +47,26 @@ automation:
         entity_id: switch.desktop_computer
         to: "on"
     action:
-      - service: light.turn_on
-        data:
-          entity_id: 
-            - light.hue_plays
-            - light.computerlamp
+      - service: scene.turn_on
+        entity_id: scene.normaal
+        
+  ### verander hue plays van kleur na 11 uur
+  - alias: "verlichting - Verander kleur om 23:00 uur"
+    trigger:
+      - platform: time
+        at: "23:00:00"
+    action:
+      - service: scene.turn_on
+        entity_id: scene.na_11_uur
+
+  ### verander hue plays van kleur na 00:00 uur
+  - alias: "verlichting - Verander kleur om 00:00 uur"
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    action:
+      - service: scene.turn_on
+        entity_id: scene.na_00_uur
 
   ### Verlichting achter monitoren en computerlamp uit ###
   - alias: "verlichting - Computerverlichting uit als computer aan is"
