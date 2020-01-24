@@ -2,7 +2,6 @@ homeassistant:
 
 ### Lichtgroepen ###
 light:
-
   - platform: group
     name: Hue Plays
     entities:
@@ -37,7 +36,6 @@ scene:
         brightness: 255
         rgb_color: [ 255, 0, 0 ] # red
       light.computerlamp: on 
-
 
 automation:
   ### Verlichting achter monitoren en computerlamp aan ###
