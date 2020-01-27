@@ -3,20 +3,20 @@ homeassistant:
 automation:
 - alias: "thema - selecteer licht thema"
   trigger:
-    platform: sun
-    event: sunrise
-  condition: []
+    - platform: sun
+      event: sunrise
+    - platform: homeassistant
+      event: start
   action:
-    service: frontend.set_theme
-    data:
-      name: clear
+    - service: frontend.set_theme
+      data:
+        name: clear
 
 - alias: "thema - selecteer donker thema"
   trigger:
-    platform: sun
-    event: sunset
-  condition: []
+    - platform: sun
+      event: sunset
   action:
-    service: frontend.set_theme
-    data:
-      name: dark
+    - service: frontend.set_theme
+      data:
+        name: dark
