@@ -15,7 +15,7 @@ automation:
         below: 6
     action:
       - service: light.turn_on
-        entity_id: light.bijkeuken_lamp
+        entity_id: light.bijkeukenlamp
 
   - alias: "verlichting - Bijkeukenverlichting uit bij 5 minuten geen beweging"
     trigger:
@@ -26,4 +26,4 @@ automation:
           minutes: 5
     action:
       - service: light.turn_off
-        entity_id: light.bijkeuken_lamp
+        entity_id: light.bijkeukenlamp

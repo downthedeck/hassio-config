@@ -164,7 +164,7 @@ cards:
         - type: "custom:button-card"
           color_type: card
           icon: mdi:track-light
-          entity: light.bijkeuken_lamp
+          entity: light.bijkeukenlamp
           show_state: true
           show_last_changed: true
           styles:

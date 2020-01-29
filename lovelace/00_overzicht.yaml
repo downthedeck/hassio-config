@@ -15,6 +15,9 @@ cards:
 
   - type: entities
     entities:
+      - entity: binary_sensor.deurbel
+        secondary_info: last-changed
+        format: datetime
       - cover.tradfri_blind
       - cover.tradfri_blind_2
       - cover.gordijnen

@@ -1,0 +1,35 @@
+homeassistant:
+
+automation:
+
+  - alias: "tts - iemand belt aan"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.deurbel 
+        to: "on"
+    action:
+      - service: tts.google_translate_say
+        entity_id: media_player.huiskamer
+        data_template:
+          message: >-
+            "Ding dong, iemand aan de deur"
+      - service: tts.google_translate_say
+        entity_id: media_player.rogier_hub
+        data_template:
+          message: >-
+            "Ding dong, iemand aan de deur"
+      - service: tts.google_translate_say
+        entity_id: media_player.keuken_speaker
+        data_template:
+          message: >-
+            "Ding dong, iemand aan de deur"
+      - service: tts.google_translate_say
+        entity_id: media_player.storms_speaker
+        data_template:
+          message: >-
+            "Ding dong, iemand aan de deur"
+      - service: tts.google_translate_say
+        entity_id: media_player.badkamer_speaker
+        data_template:
+          message: >-
+            "Ding dong, iemand aan de deur"

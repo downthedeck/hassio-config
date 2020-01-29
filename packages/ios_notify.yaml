@@ -88,3 +88,16 @@ automation:
         message: "Update"
         data:
           subtitle: "Er is een update beschikbaar!"
+
+  - alias: "notify - Iemand belt aan"
+    trigger:
+      platform: state
+      entity_id: binary_sensor.deurbel
+      to: "on"
+    action:
+      service: notify.mobile_app_iphone_van_rogier
+      data:
+        title: "Er staat iemand aan de deur"
+        message: "Deurbel ingedrukt"
+        data:
+          subtitle: "Ga snel opendoen."
