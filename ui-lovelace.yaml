@@ -31,7 +31,6 @@ views:
   - !include /config/lovelace/02_temperaturen.yaml
   - !include /config/lovelace/03_media-spelers.yaml
   - !include /config/lovelace/04_afval.yaml
-  - !include /config/lovelace/05_camera.yaml
   - !include /config/lovelace/06_mobiele-apparaten.yaml
   - !include /config/lovelace/08_automatiseringen.yaml
   - !include /config/lovelace/99_test.yaml

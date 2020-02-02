@@ -89,11 +89,15 @@ automation:
         data:
           subtitle: "Er is een update beschikbaar!"
 
-  - alias: "notify - Iemand belt aan"
+  - alias: "notify - Iemand belt aan en ben niet thuis"
     trigger:
       platform: state
       entity_id: binary_sensor.deurbel
       to: "on"
+    condition:
+      condition: state
+      entity_id: device_tracker.iphone_van_rogier
+      state: 'not_home'
     action:
       service: notify.mobile_app_iphone_van_rogier
       data:
