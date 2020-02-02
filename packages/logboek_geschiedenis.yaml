@@ -27,6 +27,7 @@ logbook:
   exclude:
     domains:
       - light
+      - media_player
     entities:
       - binary_sensor.woonkamer_sensor_motion
       - binary_sensor.kitchen_motion_motion

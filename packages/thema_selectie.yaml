@@ -7,6 +7,10 @@ automation:
       event: sunrise
     - platform: homeassistant
       event: start
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'above_horizon'
   action:
     - service: frontend.set_theme
       data:
@@ -16,6 +20,12 @@ automation:
   trigger:
     - platform: sun
       event: sunset
+    - platform: homeassistant
+      event: start
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
   action:
     - service: frontend.set_theme
       data:

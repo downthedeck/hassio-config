@@ -12,11 +12,10 @@ var:
     
 ### sensor.trash_tomorrow (trash_today) geeft de waardes: geen, gft-afval,...
 sensor:
-  - platform: afvalwijzer                 # Required
-    provider: mijnafvalwijzer             # Optional - mijnafvalwijzer (default) or afvalstoffendienstkalender
-    zipcode: !secret postcode             # Required
-    housenumber: !secret huisnummer       # Required
-    default_label: label                  # Optional - Default is 'Geen'
+  - platform: afvalwijzer
+    provider: afvalstoffendienstkalender
+    zipcode: !secret postcode
+    housenumber: !secret huisnummer
 
 automation:
   #####################################

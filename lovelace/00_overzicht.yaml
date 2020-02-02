@@ -101,24 +101,24 @@ cards:
   ### Aanwezigheid van personen in huis - eind ###
 
 
-  - type: conditional
-    conditions:
-      - entity: sensor.trash_tomorrow
-        state_not: "Geen"
-    card:
-      type: markdown
-      title: Afval morgen
-      content: >
-        {{ states('sensor.trash_firstwastetype') }}
-  - type: conditional
-    conditions:
-      - entity: sensor.trash_today
-        state_not: "Geen"
-    card:
-      type: markdown
-      title: Afval vandaag
-      content: >
-        {{ states('sensor.trash_firstwastetype') }}
+  # - type: conditional
+  #   conditions:
+  #     - entity: sensor.trash_tomorrow
+  #       state_not: "Geen"
+  #   card:
+  #     type: markdown
+  #     title: Afval morgen
+  #     content: >
+  #       {{ states('sensor.trash_firstwastetype') }}
+  # - type: conditional
+  #   conditions:
+  #     - entity: sensor.trash_today
+  #       state_not: "Geen"
+  #   card:
+  #     type: markdown
+  #     title: Afval vandaag
+  #     content: >
+  #       {{ states('sensor.trash_firstwastetype') }}
   
   - type: custom:simple-thermostat
     entity: climate.toon_thermostat

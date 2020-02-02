@@ -7,6 +7,10 @@ automation:
       - platform: state
         entity_id: binary_sensor.deurbel 
         to: "on"
+    condition:
+      - condition: time
+        after: "8:00:00"
+        before: "21:00:00"
     action:
       - service: tts.google_translate_say
         entity_id: media_player.huiskamer
