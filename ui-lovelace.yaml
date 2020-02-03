@@ -1,11 +1,3 @@
-custom_header:
-  background: 'rgba(155, 155, 155, 0.25)'
-  compact_mode: true
-  button_text:
-    options: '{{ hours24 }}:{{ minutesLZ }}'
-
-background: 'https://github.com/basnijholt/lovelace-ios-dark-mode-theme/blob/master/backgrounds/homekit-bg-4.jpeg'
-
 resources:
   - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
     type: module
@@ -25,6 +17,12 @@ resources:
     type: module
 
 title: Home
+background: var(--background-image)
+custom_header:
+  background: 'rgba(155, 155, 155, 0.25)'
+  compact_mode: true
+  button_text:
+    options: '{{ hours24 }}:{{ minutesLZ }}'
 views:
   - !include /config/lovelace/00_overzicht.yaml
   - !include /config/lovelace/01_licht.yaml
