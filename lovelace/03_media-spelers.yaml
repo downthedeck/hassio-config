@@ -67,3 +67,11 @@ cards:
       - type: custom:mini-media-player
         entity: media_player.keuken_speaker
         group: true
+
+  - type: entities
+    title: Radio
+    show_header_toggle: false
+    entities:
+      - input_select.radio_station
+      - input_select.chromecast_radio
+      - script.radio

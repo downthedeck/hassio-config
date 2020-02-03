@@ -1,0 +1,22 @@
+homeassistant:
+
+input_select:
+  radio_station:
+    name: 'Selecteer Station:'
+    options:
+      - Radio 538
+      - Q-Music
+      - 3FM
+      - 100% NL
+      - Veronica
+      - Sky Radio
+
+  chromecast_radio:
+    name: 'Selecteer Speaker(s):'
+    options:
+      - Huiskamer
+      - Keuken
+      - Badkamer
+      - Speakers
+    initial: Speakers
+    icon: mdi:speaker-wireless
