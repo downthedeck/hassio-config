@@ -20,3 +20,27 @@ input_select:
       - Speakers
     initial: Speakers
     icon: mdi:speaker-wireless
+
+automation:
+  - alias: "radio - speel radio bij thuiskomst"
+    trigger:
+      - platform: state
+        entity_id: group.people
+        to: "home"
+    condition:
+      - condition: time
+        after: "10:00:00"
+        before: "20:00:00"
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.radio_station
+          option: Radio 538
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.chromecast_radio
+          option: Speakers
+      - service: script.turn_on
+        data:
+          entity_id: script.radio
+        
