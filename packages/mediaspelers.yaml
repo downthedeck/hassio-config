@@ -1,7 +1,7 @@
 homeassistant:
 
 automation:
-## zet speler uit als het licht uit is - start ##
+## zet speaker in badkamer uit als het licht uit is - start ##
   - alias: "mediaspeler - badkamer speaker uit als licht uit is"
     trigger:
       - platform: state
@@ -16,11 +16,14 @@ automation:
 
 
 ## mediaspelers uit wanneer het bedtijd is - start ##
-  - alias: "mediaspeler - Alle mediaspelers uit wanneer het bedtijd is"
+  - alias: "mediaspeler - Alle mediaspelers uit bedtijd of niet thuis"
     trigger:
-      platform: state
-      entity_id: input_boolean.bedtime
-      to: "on"
+      - platform: state
+        entity_id: input_boolean.bedtime
+        to: "on"
+      - platform: state
+        entity_id: group.people
+        to: "not_home"
     action:
       - service: media_player.turn_off
         entity_id: media_player.speakers

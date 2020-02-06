@@ -43,4 +43,22 @@ automation:
       - service: script.turn_on
         data:
           entity_id: script.radio
+
+  - alias: "radio - stop radio bij verlaten woning"
+    trigger:
+      - platform: state
+        entity_id: group.people
+        to: "not_home"
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.radio_station
+          option: Radio 538
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.chromecast_radio
+          option: Speakers
+      - service: script.turn_on
+        data:
+          entity_id: script.radio
         

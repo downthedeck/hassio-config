@@ -1,0 +1,16 @@
+homeassistant:
+
+##
+## https://www.home-assistant.io/docs/scripts/#raise-and-consume-custom-events
+##
+
+automation:
+  - alias: "Fire an event"
+    trigger:
+      - platform: state
+        entity_id: group.people
+        to: 'home'
+    action:
+      - event: event_home
+        event_data:
+          state: 'on'
