@@ -194,7 +194,7 @@ automation:
           - light.salontafel_lamp
 
   #######################################
-  ### Woonkamerlamp uit bij tv kijken ###
+  ### salontafellamp uit bij tv kijken ###
   #######################################
   - alias: "verlichting - woonkamerlamp uit wanneer tv wordt gekeken"
     trigger:

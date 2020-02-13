@@ -1,0 +1,85 @@
+homeassistant:
+
+#############
+### setup ###
+#############
+hue:
+  bridges:
+    - host: 192.168.68.132
+      allow_unreachable: true
+      allow_hue_groups: false
+
+############
+### Flux ###
+############
+switch:
+  - platform: flux
+    lights:
+      - light.salontafel_lamp
+    name: Flux salontafellamp
+#    start_time: '7:00'
+#    stop_time: '0:00'
+#    start_colortemp: 4500
+#    sunset_colortemp: 2000
+#    stop_colortemp: 1900
+    mode: mired
+  - platform: flux
+    lights:
+      - light.staande_lamp_1
+      - light.staande_lamp_2
+      - light.staande_lamp_3
+      - light.staande_lamp_4
+      - light.staande_lamp_5
+      - light.staande_lamp_6
+    name: Flux staandelamp
+    mode: mired
+
+### Lichtgroepen ###
+light:
+  - platform: switch
+    name: Kerstboom
+    entity_id: switch.kerstboom
+
+  - platform: group
+    name: Hue Blooms
+    entities:
+      - light.bloem_1
+      - light.bloem_2
+
+  - platform: group
+    name: Staande lamp
+    entities:
+      - light.staande_lamp_1
+      - light.staande_lamp_2
+      - light.staande_lamp_3
+      - light.staande_lamp_4
+      - light.staande_lamp_5
+      - light.staande_lamp_6
+
+  - platform: group
+    name: Afzuigkap
+    entities:
+      - light.afzuigkap_1
+      - light.afzuigkap_2 
+
+  - platform: group
+    name: Binnenverlichting
+    entities:
+      - light.achterkamerlamp
+      - light.badkamer
+      - light.badkamer_spiegel
+      - light.bijkeuken_lamp
+      - light.hue_blooms
+      - light.computerlamp
+      - light.hal
+      - light.hue_plays
+      - light.keuken
+      - light.lamp_in_slaapkamer
+      - light.overloop
+      - light.sam
+      - light.storm
+      - light.toilet
+      - light.salontafel_lamp
+      - light.staande_lamp
+      - light.kerstboom
+      - light.afzuigkap

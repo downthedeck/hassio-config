@@ -1,0 +1,89 @@
+homeassistant:
+
+##
+## https://www.home-assistant.io/docs/scripts/#raise-and-consume-custom-events
+##automation:
+  # - alias: "Fire an event"
+  #   trigger:
+  #     - platform: state
+  #       entity_id: group.people
+  #       to: 'home'
+  #   action:
+  #     - event: event_home
+  #       event_data:
+  #         state: 'on'
+
+sensor:
+  # Sensor that shows the time
+  # https://www.home-assistant.io/components/time_date/
+
+  # Time
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'time_date'
+      - 'date'
+
+  - platform: template
+    sensors:
+      days_after_vacuuming:
+        friendly_name: Dagen na Stofzuigen
+        entity_id: sensor.time
+        unit_of_measurement: 'dagen'
+        value_template: "{{ ((as_timestamp(now()) - state_attr('input_datetime.vacuuming','timestamp')) | int / 86400) | round(0) -1 }}"
+      days_after_mopping:
+        friendly_name: Dagen na Dweilen
+        entity_id: sensor.time
+        unit_of_measurement: 'dagen'
+        value_template: "{{ ((as_timestamp(now()) - state_attr('input_datetime.mopping','timestamp')) | int / 86400) | round(0) -1 }}"
+      days_after_cleaning_the_bathroom:
+        friendly_name: Dagen na Badkamer schoonmaken
+        entity_id: sensor.time
+        unit_of_measurement: 'dagen'
+        value_template: "{{ ((as_timestamp(now()) - state_attr('input_datetime.cleaning_the_bathroom','timestamp')) | int / 86400) | round(0) -1 }}"
+      days_after_clean_the_toilet:
+        friendly_name: Dagen na Toilet schoonmaken
+        entity_id: sensor.time
+        unit_of_measurement: 'dagen'
+        value_template: "{{ ((as_timestamp(now()) - state_attr('input_datetime.clean_the_toilet','timestamp')) | int / 86400) | round(0) -1 }}"
+      days_after_dust_off:
+        friendly_name: Dagen na Afstoffen
+        entity_id: sensor.time
+        unit_of_measurement: 'dagen'
+        value_template: "{{ ((as_timestamp(now()) - state_attr('input_datetime.dust_off','timestamp')) | int / 86400) | round(0) -1 }}"
+      days_after_change_bedding:
+        friendly_name: Dagen na beddengoed verschonen
+        entity_id: sensor.time
+        unit_of_measurement: 'dagen'
+        value_template: "{{ ((as_timestamp(now()) - state_attr('input_datetime.change_bedding','timestamp')) | int / 86400) | round(0) -1 }}"
+      days_after_clean_up_studio:
+        friendly_name: Dagen na Opruimen studio
+        entity_id: sensor.time
+        unit_of_measurement: 'dagen'
+        value_template: "{{ ((as_timestamp(now()) - state_attr('input_datetime.clean_up_studio','timestamp')) | int / 86400) | round(0) -1 }}"
+
+input_datetime:
+  vacuuming:
+    name: Stofzuigen
+    has_date: true
+  mopping:
+    name: Dweilen
+    has_date: true
+  cleaning_the_bathroom:
+    name: Badkamer schoonmaken
+    has_date: true
+  clean_the_toilet:
+    name: Toilet schoonmaken
+    has_date: true
+  dust_off:
+    name: Afstoffen
+    has_date: true
+  change_bedding:
+    name: Beddengoed verschonen
+    has_date: true
+  clean_up_studio:
+    name: Studio opruimen
+    has_date: true
+
+
+

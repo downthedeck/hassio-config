@@ -26,6 +26,7 @@ cards:
       - entity: sensor.input_booleans
       - entity: sensor.covers
         icon: mdi:blinds
+      - entity: sensor.input_selects
 
   - type: entities
     title: NUC/Hass.io status

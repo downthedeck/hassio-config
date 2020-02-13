@@ -8,12 +8,8 @@ recorder:
   purge_keep_days: 7
   purge_interval: 7
   exclude:
-#    domains:
-#      - device_tracker
-#      - media_player
-#      - sensor
-#      - binary_sensor
-#      - light
+    domains:
+      - time_date
     entities:
       - sensor.trash_firstdate
       - sensor.trash_firstwastetype
@@ -28,6 +24,7 @@ logbook:
     domains:
       - light
       - media_player
+      - time_date
     entities:
       - binary_sensor.woonkamer_sensor_motion
       - binary_sensor.kitchen_motion_motion

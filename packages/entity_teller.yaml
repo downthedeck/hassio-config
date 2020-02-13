@@ -27,3 +27,6 @@ sensor:
       input_booleans:
         friendly_name: Input_booleans
         value_template: "{{ states.input_boolean | count }}"
+      input_selects:
+        friendly_name: Input Selects
+        value_template: "{{ states.input_select | count }}"
