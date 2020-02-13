@@ -9,7 +9,7 @@ recorder:
   purge_interval: 7
   exclude:
     domains:
-      - time_date
+
     entities:
       - sensor.trash_firstdate
       - sensor.trash_firstwastetype
@@ -18,13 +18,14 @@ recorder:
       - sensor.trash_papier
       - sensor.trash_today
       - sensor.trash_tomorrow
+      - sensor.time
+      - sensor.time_date
 
 logbook:
   exclude:
     domains:
       - light
       - media_player
-      - time_date
     entities:
       - binary_sensor.woonkamer_sensor_motion
       - binary_sensor.kitchen_motion_motion
@@ -35,7 +36,8 @@ logbook:
       - binary_sensor.entrance_motion_motion
       - binary_sensor.werkdag
       - binary_sensor.werkdag_morgen
-      
+      - sensor.time
+      - sensor.time_date      
 history:
 #  exclude:
 #    domains:
