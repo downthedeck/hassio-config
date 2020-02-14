@@ -19,7 +19,7 @@ sensor:
 
 automation:
   #####################################
-  ### TTS Afval morgen buitenzetten ###
+  ### TTS Afval vandaag buitenzetten ###
   #####################################
   - alias: Afval - melding morgen buitenzetten
     trigger:
@@ -31,46 +31,8 @@ automation:
         entity_id: person.rogier_van_turnhout
         state: "home"
       - condition: time
-        after: "17:00:00"
-        before: "23:00:00"
-      - condition: template
-        value_template: '{{ states("sensor.trash_tomorrow") != "Geen" }}'
-      - condition: numeric_state
-        entity_id: var.msg_count
-        above: 0
-      - condition: state
-        entity_id: var.msg_block
-        state: "false"
-    action:
-      - service: tts.google_translate_say
-        entity_id: media_player.huiskamer
-        data_template:
-          message: >-
-            Hallo, Rogier. Morgen {{ states("sensor.trash_firstwastetype") }} aan straat zetten.
-      - service: var.set
-        data:
-          entity_id: var.msg_count
-          value_template: "{{ (states('var.msg_count') | int) - 1 }}"
-      - service: var.set
-        data:
-          entity_id: var.msg_block
-          value: "true"
-          
-  ######################################
-  ### TTS Afval vandaag buitenzetten ###
-  ######################################
-  - alias: Afval - melding vandaag buitenzetten
-    trigger:
-      platform: state
-      entity_id: binary_sensor.woonkamer_sensor_motion
-      to: "on"
-    condition:
-      - condition: state
-        entity_id: person.rogier_van_turnhout
-        state: "home"
-      - condition: time
-        after: "07:00:00"
-        before: "09:00:00"
+        after: "7:15:00"
+        before: "12:00:00"
       - condition: template
         value_template: '{{ states("sensor.trash_today") != "Geen" }}'
       - condition: numeric_state
@@ -84,7 +46,45 @@ automation:
         entity_id: media_player.huiskamer
         data_template:
           message: >-
-            Hallo, Rogier. Vandaag {{ states("sensor.trash_firstwastetype") }} aan straat zetten.
+            Rogier, vandaag {{ states("sensor.trash_today") }} aan straat zetten.
+      - service: var.set
+        data:
+          entity_id: var.msg_count
+          value_template: "{{ (states('var.msg_count') | int) - 1 }}"
+      - service: var.set
+        data:
+          entity_id: var.msg_block
+          value: "true"
+          
+  ######################################
+  ### TTS Papier Afval morgen buitenzetten ###
+  ######################################
+  - alias: Afval - melding morgen papier buitenzetten
+    trigger:
+      platform: state
+      entity_id: binary_sensor.woonkamer_sensor_motion
+      to: "on"
+    condition:
+      - condition: state
+        entity_id: person.rogier_van_turnhout
+        state: "home"
+      - condition: time
+        after: "07:00:00"
+        before: "09:00:00"
+      - condition: template
+        value_template: '{{ states("sensor.trash_tomorrow") = "Papier" }}'
+      - condition: numeric_state
+        entity_id: var.msg_count
+        above: 0
+      - condition: state
+        entity_id: var.msg_block
+        state: "false"
+    action:
+      - service: tts.google_translate_say
+        entity_id: media_player.huiskamer
+        data_template:
+          message: >-
+            Rogier. Morgen papier aan straat zetten.
       - service: var.set
         data:
           entity_id: var.msg_count
@@ -97,7 +97,7 @@ automation:
   #################################
   ### blokkeer automation reset ###
   #################################
-  - alias: afval - blokkeer afval melding voor een specifieke tijd
+  - alias: afval - blokkeer melding voor een specifieke tijd
     trigger:
       - platform: state
         entity_id: var.msg_block
@@ -118,7 +118,7 @@ automation:
   - alias: Afval - reset vaiabele msg_count
     trigger:
       - platform: time
-        at: "06:00:00"
+        at: "04:00:00"
     action:
       - service: var.set
         data:
