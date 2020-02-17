@@ -26,6 +26,7 @@ logbook:
     domains:
       - light
       - media_player
+      - device_tracker
     entities:
       - binary_sensor.woonkamer_sensor_motion
       - binary_sensor.kitchen_motion_motion

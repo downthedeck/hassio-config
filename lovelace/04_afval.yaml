@@ -1,6 +1,36 @@
 title: Afval
 icon: mdi:trash-can
 cards:
+  - type: horizontal-stack
+    cards:
+      - type: conditional
+        conditions:
+          - entity: sensor.trash_today
+            state: "gft-afval"
+        card:
+          type: picture-entity
+          entity: sensor.trash_gft_afval
+          show_name: false
+          image: /local/mijnafvalwijzer/gft3.png
+      - type: conditional
+        conditions:
+          - entity: sensor.trash_today
+            state: "pmd"
+        card:
+          type: picture-entity
+          entity: sensor.trash_pmd
+          show_name: false
+          image: /local/mijnafvalwijzer/pmd.png
+      - type: conditional
+        conditions:
+          - entity: sensor.trash_today
+            state: "papier"
+        card:
+          type: picture-entity
+          entity: sensor.trash_papier
+          show_name: false
+          image: /local/mijnafvalwijzer/papier3.png
+
   - type: entities
     entities:
       - sensor.trash_first_next_date
@@ -14,7 +44,6 @@ cards:
       - sensor.trash_day_after_tomorrow
       
   - type: horizontal-stack
-    title: Datums ophalen afval
     cards:
     - type: picture-entity
       entity: sensor.trash_pmd
