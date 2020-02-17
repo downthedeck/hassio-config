@@ -18,7 +18,8 @@ binary_sensor:
     name: Werkdag morgen
     country: NL
     days_offset: 1
-    
+
+
 automation:
   - alias: "Klimaat - Away"
     trigger:
@@ -51,7 +52,7 @@ automation:
           preset_mode: "comfort"
 
 
-  - alias: "Klimaat - (Home) op werkdagen"
+  - alias: "Klimaat - home"
     trigger:
       - platform: state
         entity_id: group.people
@@ -59,9 +60,6 @@ automation:
     condition:
       - condition: template
         value_template: '{{ states("sensor.season") != "summer" }}'
-      - condition: state
-        entity_id: binary_sensor.werkdag
-        state: "on"
       - condition: time
         after: "14:00:00"
     action:
@@ -71,10 +69,29 @@ automation:
           preset_mode: "home"
 
 
-  - alias: "Klimaat - Sleep"        
+  - alias: "Klimaat - Sleep (morgen werkdag)"
     trigger:
       - platform: time
-        at: "00:00:00"
+        at: "23:30:00"
+    condition: 
+      - condition: state
+        entity_id: binary_sensor.werkdag_morgen
+        state: "on"
+    action:
+      - service: climate.set_preset_mode
+        data:
+          entity_id: climate.toon_thermostat
+          preset_mode: "sleep"
+
+
+  - alias: "Klimaat - Sleep (morgen géén werkdag)"
+    trigger:
+      - platform: time
+        at: "00:30:00"
+    condition: 
+      - condition: state
+        entity_id: binary_sensor.werkdag_morgen
+        state: "off"
     action:
       - service: climate.set_preset_mode
         data:
