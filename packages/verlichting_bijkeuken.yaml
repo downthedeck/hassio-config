@@ -7,7 +7,7 @@ automation:
   - alias: "verlichting - bijkeukenverlichting aan bij beweging"
     trigger:
       - platform: state
-        entity_id: binary_sensor.bijkeuken_motion_motion
+        entity_id: binary_sensor.bijkeuken_beweging
         to : "on"
     condition:
       - condition: numeric_state
@@ -20,8 +20,8 @@ automation:
   - alias: "verlichting - Bijkeukenverlichting uit bij 5 minuten geen beweging"
     trigger:
       - platform: state
-        entity_id: binary_sensor.bijkeuken_motion_motion
-        to : "off"
+        entity_id: binary_sensor.bijkeuken_beweging
+        to: "off"
         for:
           minutes: 5
     action:
