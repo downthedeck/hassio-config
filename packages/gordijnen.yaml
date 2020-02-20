@@ -4,8 +4,8 @@ cover:
   - platform: group
     name: Gordijnen
     entities:
-      - cover.tradfri_blind
-      - cover.tradfri_blind_2
+      - cover.gordijn_links
+      - cover.gordijn_rechts
 
 ### Gordijnen sluiten - start ###
 automation:

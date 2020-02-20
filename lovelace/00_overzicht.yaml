@@ -18,8 +18,8 @@ cards:
       - entity: binary_sensor.deurbel
         secondary_info: last-changed
         format: datetime
-      - cover.tradfri_blind
-      - cover.tradfri_blind_2
+      - cover.gordijn_links
+      - cover.gordijn_rechts
       - cover.gordijnen
 
   ### Aanwezigheid van personen in huis - start ###
