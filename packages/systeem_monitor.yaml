@@ -23,9 +23,9 @@ sensor:
 
 ## Proxmox VE
 proxmoxve:
-  - host: 192.168.68.200
-    username: root
-    password: "!Adp56gyd"
+  - host: proxmox_host
+    username: !secret proxmox_user
+    password: !secret proxmox_pass
     verify_ssl: false
     nodes:
       - node: "pve"

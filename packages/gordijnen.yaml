@@ -36,4 +36,3 @@ automation:
     action:
       service: cover.open_cover
       entity_id: all
-### Gordijnen sluiten - eind ###
