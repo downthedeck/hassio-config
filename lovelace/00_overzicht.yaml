@@ -13,6 +13,23 @@ cards:
       enabled: true
   ### Bedtime - eind ###
 
+  - type: vertical-stack
+    cards: 
+      - type: glance
+        columns:  2
+        entities:
+          - sensor.days_after_vacuuming
+          - sensor.days_after_mopping
+          - sensor.days_after_dust_off
+          - sensor.days_after_clean_the_toilet
+#          - sensor.days_after_clean_up_studio
+          - sensor.days_after_cleaning_the_bathroom
+          - sensor.days_after_change_bedding
+      - type: entities
+        entities:
+          - input_select.household_task
+          - script.set_date_household_task
+
   - type: entities
     entities:
       - entity: binary_sensor.deurbel
@@ -20,7 +37,7 @@ cards:
         format: datetime
       - cover.gordijn_links
       - cover.gordijn_rechts
-      - cover.gordijnen
+      - scene.film_kijken
 
   ### Aanwezigheid van personen in huis - start ###
   - type: vertical-stack
@@ -41,6 +58,7 @@ cards:
                       width: 100%
                     state_filter:
                       "not_home": grayscale(1)
+                      "Werk": grayscale(1)
               - type: markdown
                 content: > 
                   {{ states.sensor.geocoded_location.state }}

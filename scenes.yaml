@@ -5,6 +5,7 @@
       brightness: 255
       rgb_color: [ 191, 29, 255 ] # purple
     light.computerlamp: on
+
 - name: "na 11 uur"
   entities:
     light.hue_plays:
@@ -12,10 +13,20 @@
       brightness: 255
       rgb_color: [ 254, 255, 63 ] # Yellow
     light.computerlamp: on
+
 - name: "na 00 uur"
   entities:
     light.hue_plays:
       state: on
       brightness: 255
       rgb_color: [ 255, 0, 0 ] # red
-    light.computerlamp: on 
+    light.computerlamp: on
+
+- name: "Film kijken"
+  entities:
+    cover.gordijn_links:
+      state: open
+      current_position: 20
+    cover.gordijn_rechts: 
+      state: open
+      current_position: 20

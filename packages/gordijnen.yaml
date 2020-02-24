@@ -1,12 +1,5 @@
 homeassistant:
 
-cover:
-  - platform: group
-    name: Gordijnen
-    entities:
-      - cover.gordijn_links
-      - cover.gordijn_rechts
-
 ### Gordijnen sluiten - start ###
 automation:
   - alias: "gordijnen - sluit gordijnen bij zonsondergang"
@@ -15,9 +8,8 @@ automation:
       event: sunset
     action:
       service: cover.close_cover
-      entity_id: cover.gordijnen
+      entity_id: all
 ### Gordijnen sluiten - eind ###
-
 
 ### Gordijnen open - start ###
   - alias: "gordijnen - open gordijnen bij zonsopkomst (en niemand thuis)"
@@ -30,7 +22,7 @@ automation:
       state: "not_home"
     action:
       service: cover.open_cover
-      entity_id: group.gordijnen
+      entity_id: all
 
   - alias: "gordijnen - open gordijnen bij verlaten woning (en zon is op)"
     trigger:
@@ -43,5 +35,5 @@ automation:
       state: "above_horizon"
     action:
       service: cover.open_cover
-      entity_id: group.gordijnen
+      entity_id: all
 ### Gordijnen sluiten - eind ###
