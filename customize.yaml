@@ -6,3 +6,9 @@ device_tracker.iphone_van_storm:
   entity_picture: /local/faces/storm.jpg
 person.storm_van_turnhout:
   entity_picture: /local/faces/storm.jpg
+sensor.days_after_vacuuming:
+  icon: mdi:robot-vacuum-variant
+sensor.days_after_mopping:
+  icon: mdi:water
+sensor.days_after_dust_off:
+  icon: mdi:television-clean
