@@ -13,6 +13,24 @@ cards:
       enabled: true
   ### Bedtime - eind ###
 
+- type: entities
+  entities:
+    - sensor.living_room_humidity
+    - sensor.living_room_temperature
+    - sensor.ultrasonic_sensor
+
+  - type: glance
+    columns: 2
+    entities:
+      - sensor.worldwide_coronavirus_confirmed
+      - sensor.worldwide_coronavirus_current
+      - sensor.worldwide_coronavirus_deaths
+      - sensor.worldwide_coronavirus_recovered
+      - sensor.netherlands_coronavirus_confirmed
+      - sensor.netherlands_coronavirus_current
+      - sensor.netherlands_coronavirus_deaths
+      - sensor.netherlands_coronavirus_recovered
+
   - type: vertical-stack
     cards: 
       - type: glance

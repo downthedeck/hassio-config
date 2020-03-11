@@ -1,5 +1,8 @@
 homeassistant:
 
+###
+###
+
 automation:
   - alias: "notify - storm is thuis"
     trigger:

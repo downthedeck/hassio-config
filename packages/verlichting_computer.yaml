@@ -52,7 +52,7 @@ automation:
         entity_id: scene.na_00_uur
 
   ### Verlichting achter monitoren en computerlamp uit ###
-  - alias: "verlichting - Computerverlichting uit als computer aan is"
+  - alias: "verlichting - Computerverlichting uit als computer uit is"
     trigger:
       - platform: state
         entity_id: switch.desktop_computer
