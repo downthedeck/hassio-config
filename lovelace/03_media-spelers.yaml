@@ -28,6 +28,12 @@ cards:
         group: true
         hide: 
           controls: true
+      - type: custom:mini-media-player
+        entity: media_player.huiskamer_speaker
+        group: true
+        hide: 
+          controls: true
+
   
   - type: entities
     title: Hubs

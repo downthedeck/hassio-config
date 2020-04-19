@@ -256,3 +256,9 @@ cards:
       - sensor.wasmachine_watts
       - input_select.state_washingmachine
       - switch.desktop_computer
+
+  - type: map
+    entities:
+      - device_tracker.iphone_van_rogier
+      - device_tracker.iphone_van_storm
+    hours_to_show: 48
